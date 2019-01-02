@@ -11,7 +11,7 @@ This guide describes the software and how to install it.
 ## R
 
 We will use R to manipulate, visualize, and statistically analyze data.
-We will install the latest version of R (v 3.3.2; "Sincere Pumpkin Patch") using the following insructions:
+We will install the latest version of R (v 3.5.2; "Eggshell Igloo") using the following insructions:
 
 1. Open a web browser and naviate to the IU CRAN mirror: http://ftp.ussg.iu.edu/CRAN/
 2. Please select your operating system (Mac, Windows, Linux)
