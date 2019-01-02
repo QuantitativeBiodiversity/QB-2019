@@ -111,5 +111,3 @@ You have two options:
 mpm --install framed
 mpm --install titling
 ```
-
-Note that the `Knitr` conversion will output a .pdf  file with the same name as the processesd .Rmd file. This cannot be completed if the target file is being used by another program such as a PDF reader.
