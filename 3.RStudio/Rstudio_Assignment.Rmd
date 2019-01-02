@@ -1,0 +1,50 @@
+---
+title: "RStudio Assignment: R Test"
+author: "Student Name"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: pdf_document
+---
+
+## Directions:
+This is an RMarkdown file.
+It will allow you to integrate text and R code into one file.
+Please complete parts 1 and 2 below.
+Part 3 should be left alone (it should work as needed)
+When you are done, **Knit** the text and code into a PDF file.
+Basically, just press the **Knit** button above.
+After Knitting, please submit via GitHub. 
+Review your in-class Git assignment if needed.
+It is due on **January 18^th^, 2015 at Noon**.  
+
+## Assignment:
+
+1. Edit your name in the *author* line above (line 3)
+
+2. Print a message in the R terminal
+
+    Ex. Print "*Hello, World!*"
+```{r}
+
+
+```
+
+    Now, print your own statement
+```{r}
+
+
+```
+
+3. Tell us about your system. Basically, just leave this part alone and it will do magic
+
+**Do Not Modify This Part**
+
+```{r}
+info <- unname(c(Sys.info()[6],
+          .Platform$OS.type,
+          Sys.info()[1:2],
+          R.version.string,
+          .Platform$GUI,
+          system("git --version", intern = TRUE)))
+info
+```
+
