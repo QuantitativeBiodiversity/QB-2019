@@ -1,14 +1,16 @@
 ---
-title: "Software Installation Guide"
+title: "4\\. Software Installation Guide"
 author: "Z620: Quantitative Biodiversity, Indiana University"
 output: pdf_document
 geometry: margin=2.54cm
 ---
 
-Quantitative Biodiveristy requires that you install certain software on your personal computers, including R, RStudio, Git, and LaTeX.
+## OVERVIEW
+
+Quantitative Biodiveristy (QB) requires that you install certain software on your personal computers, including R, RStudio, Git, and LaTeX.
 This guide describes the software and how to install it.
 
-## R
+##1) R
 
 We will use R to manipulate, visualize, and statistically analyze data.
 We will install the latest version of R (v 3.5.2; "Eggshell Igloo") using the following insructions:
@@ -24,8 +26,8 @@ We will install the latest version of R (v 3.5.2; "Eggshell Igloo") using the fo
     Instead, it relies on the program XQuartz for generating plots, etc.
     If you do not already have XQuarts installed, you will need to do this.
     You can download XQuartz v2.7.11 from the following site: http://xquartz.macosforge.org/landing/
-    
-## Git
+
+##2) Git
 
 We will be using Git as the version control software to manage our text and code.
 If you already use Git, please ensure you are using the most up-to-date version.
@@ -49,7 +51,7 @@ If you do not have Git yet installed, please do the following:
   **On Mac**: We recommend "Checkout as-is, commit Unix-style line endings"
   **On Windows**: We recommend "Checkout Windows-style, commit Unix-style line endings"
 
-## RStudio
+##3)  RStudio
 
 We will be using RStudio as the development environment to conduct exercises in R. 
 We will also use RStudio to edit and create markdown files. 
@@ -59,8 +61,8 @@ If you do not have a current RStudio version installed on your computer (v 1.0.1
 2. Select and download the appropriate installer for your operating system (Windows, Mac, Linux)
 3. Open the installer and follow the onscreen directions
 4. The default installation options are recommended for most users
-    
-## LaTex
+
+##4)  LaTex
 
 Behind the scences, we will be using the typsettings systems LaTeX.
 LaTeX will be used by RStudio and the R package `Knitr` to convert our RMarkdown files (.Rmd) into professional-quality PDF files. 
