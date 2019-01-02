@@ -43,7 +43,7 @@ If you do not have Git yet installed, please do the following:
   If you get `/usr/bin/g++` as a reply, then you are ready to move on.
   
   **On Windows**: This process will install Git Bash (msysGit). 
-  During installation, you will be asked to adjust your **PATH environment**.
+  During installation, you will be asked to adjust your **PATH environment variable**.
   To provide you with the most flexibility, we recommend that you select the option to "Use Git from the Windows Command Prompt".
   In addition, we recommend that during installation you select "Use OpenSSH" for your secure shell client with GitBash.
   
@@ -78,13 +78,15 @@ If you do not have LaTeX installed on your computer, please do the following:
 **On a PC**:
 
 1. Install Basic MiKTeX: http://miktex.org/download.
-2. Note: you need to use the MiKTeX package manager to download required style guides. 
+2. Note: you need to use the MiKTeX package manager to download required style guides.
+3. Add folder containing MiKTeX biniaries to your **PATH environment variable**
 
 By default, RStudio uses style guides to format our PDF documents. 
 These style guides include framed.sty and titling.sty.
 We have found that not all LaTeX installations include these style guides.
 If you do not have them, you will get an error message when you "Knit".
 To fix this, you need to install the required files.
+For instructions to add MiKTeX binaries to **PATH environment variable** see https://stackoverflow.com/questions/47911135/r-sweave-no-tex-installation-detected.
 
 **On a Mac**:
 Type the following in terminal:
@@ -109,3 +111,5 @@ You have two options:
 mpm --install framed
 mpm --install titling
 ```
+
+Note that the `Knitr` conversion will output a .pdf  file with the same name as the processesd .Rmd file. This cannot be completed if the target file is being used by another program such as a PDF reader.
