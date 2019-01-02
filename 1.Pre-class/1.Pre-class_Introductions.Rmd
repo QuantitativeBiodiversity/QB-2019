@@ -1,7 +1,6 @@
 ---
 title: "1\\. Introduction to version control and computing tools"
 author: "Z620: Quantitative Biodiversity, Indiana University"
-date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: pdf_document
 geometry: margin=2.54cm
 ---
