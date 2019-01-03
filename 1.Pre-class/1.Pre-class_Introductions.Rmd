@@ -98,7 +98,13 @@ All assignments in this class will require that you successfully create a Markdo
 
 Soon, we will make sure that your personal computer is set up with the proper versions of all necessary software. 
 But for now, we are going to become familiar with a web-based version of RStudio that does not require an installation. 
-Open a web browser and type the following into the address bar: <https://rstudio.iu.edu>.
+Open a web browser and type the following into the address bar: <https://storefront.iuanyware.iu.edu>.
+Log in to the storefront using your IU username and passphrase, and then click `Log On`. Complete a Two-Step Login using the Duo option of your choice.
+When the storefront appears, select the **APPS** tab on the top of the page. Once in the APPS tab use the search window in the top right corner to search for **Rstudio** and click on the Rstiudio app logo to run it.
+
+Finally, to obtain the complete layout of the Rstuidio integrated development environment (IDE) we will open the script editor from the File menu on the top left corner:
+`File > New File > R script.`
+
 Now, we're going to do some simple exercises to get you familiar with how to use R and RStudio.
 There are many on-line resources (websites, videos, etc.) that can provide additional background and instruction.
 For example, here is a site that provides some information that will compliment some of the basics that we are about to explore: <https://www.sitepoint.com/introduction-r-rstudio/>
@@ -161,7 +167,7 @@ a <- 10
 b <- a + 20
 ```
 
-Check the value of *b*? 
+Check the value of *b* by typing `b` and hitting enter.
 
 Now let's reassign a new value to *a*:
 ```{r}
@@ -195,6 +201,8 @@ You can now clear all of the stored variables from R's memory using two function
 ```{r}
 rm(list=ls())
 ```
+
+For your convinience you might also want to clear the console. this can be done usin `CTRL` + `L`. This will not erase the history of commands you executed. These can be found in the **History tab** of the **Workspace and History pane**, and can also be accessed from the console by the up and down arrows.
 
 ### Working with vectors in R
 
