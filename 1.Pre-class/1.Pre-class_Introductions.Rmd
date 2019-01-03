@@ -7,8 +7,8 @@ geometry: margin=2.54cm
 
 ## OVERVIEW
 
-In this pre-class exercise, you will be introduced to the computational tools that we will be using in Quantitative Biodiversity.
-By the end of this exercise you will understand the basics of version control and how it is implemented using Git and GitHub, and basic Linux commands. 
+In this pre-class exercise, you will be introduced to the computational tools that we will be using in Quantitative Biodiversity (QB).
+By the end of this exercise you will understand the basics of version control and how it is implemented using Git and GitHub, along with basic Linux commands. 
 Last, you will become acquainted with the data analysis language R and the R-based development environment RStudio. 
 You will learn how to perform basic statistics and operations on data structures such as vectors. 
 
@@ -71,17 +71,14 @@ While most any technology company, federal agency, research or data center (e.g.
 
 ####Assignment 3: Linux tutorial
 
-As mentioned above, version control using Git and GitHub will require that you be competent with some basic UNIX commands. 
-You may have been introduced to Linux at some point, but it may have been years ago. 
-That's OK. 
-The following website will help you get up to speed <http://www.ee.surrey.ac.uk/Teaching/Unix/>
+As mentioned above, version control using Git and GitHub will require that you be competent with some very basic UNIX commands. The following website will either be a refresher or will quickly help you get up to speed <http://www.ee.surrey.ac.uk/Teaching/Unix/>
 
 + Read "Introduction to the UNIX Operating System"
 + Take "Tutorial One" and "Tutorial Two"
 
 ***
 
-## 2) LEVERAGING THE R PROJECT FOR REPRODUCIBLE SCIENCE
+## 2) LEVERAGING R FOR REPRODUCIBLE SCIENCE
 
 ### Overview
 
@@ -90,16 +87,16 @@ It is one of the most popular tools for conducting computational research in the
 We are going to harness the power of R using **RStudio** (<http://www.rstudio.com/>), an integrated development environment (IDE), which has some nice features. 
 In addition to being more user friendly than R, RStudio will allow us to interface with other tools. 
 For example, the document you are reading was generated in RMarkdown (<http://rmarkdown.rstudio.com>). 
-Markdown is a simple formatting syntax for authoring HTML, PDF, and other documents. 
+**Markdown** is a simple formatting syntax for authoring HTML, PDF, and other documents. 
 We will also use a tool called **knitr** (<http://yihui.name/knitr/>), which is a package that generates reports from R script and Markdown text. 
 For example, when you click the "Knit PDF" button in the scripting window of RStudio, a document will be generated that includes LaTeX (<http://www.latex-project.org/>) typesetting as well as the output of any embedded R code.
   
 However, if there are errors in the Rcode in your Markdown document, you will not be able to knit a PDF file. 
-All assignments in this class will require that you successfully create a Markdown-generated PDF using knitr; you will then **push** this document to the course **repository** hosted on GitHub (<https://github.com/QuantitativeBiodiversity/QB-2019>) and generate a **pull request**.
+All assignments in this class will require that you successfully create a Markdown-generated PDF using knitr; you will then **push** this document to the course **repository** hosted on GitHub (<https://github.com/QBstudents>) and generate a **pull request** for instructors. 
 
 ### Introduction to RStudio
 
-Eventually, we will make sure that your personal computer is set up with the proper versions of all necessary software. 
+Soon, we will make sure that your personal computer is set up with the proper versions of all necessary software. 
 But for now, we are going to become familiar with a web-based version of RStudio that does not require an installation. 
 Open a web browser and type the following into the address bar: <https://rstudio.iu.edu>.
 Now, we're going to do some simple exercises to get you familiar with how to use R and RStudio.
@@ -113,7 +110,7 @@ First, the lower left-hand panel of the RStudio window is referred to as the *Co
 You can type your code directly at the **command line** in the console and hit enter.
 This is quick and easy, but it's not a great way to conduct reproducible science.
 A second way to execute code is to type it into the **script editor pane** in the upper-left panel of the Rstudio window.
-The code that you write can then be saved in an organized way as a *.Rmd file* when you are finished. 
+The code that you write can then be saved in an organized way as an RMarkdown file (*.Rmd file*) when you are finished. 
 You can execute code from the script editor pane by hitting Command+Enter (Mac) or Ctrl+Enter (PC).
 This will submit all of the code for the line where your cursor is located.
 Alternatively, you can highlight multiple lines of code and submit as described above. 
@@ -148,7 +145,7 @@ Use the **console pane** in the lower left of the Rstudio window to complete the
 sin(4) 
 ```
 
-***Logarithms*** Another example of functions and arguments. It is common for people, even scientists, to forget what logarithms are. A logarithm is simply the exponent needed to raise one number (i.e., the base) to obtain another number. For example, the exponent needed to raise 10 to 100 is 2. So, 2 is the logarithm of 100 using base 10.
+***Logarithms*** Here is another example of functions and arguments. It is common for people, even scientists, to forget what logarithms are. A logarithm is simply the exponent needed to raise one number (i.e., the base) to obtain another number. For example, the exponent needed to raise 10 to 100 is 2. So, 2 is the logarithm of 100 using base 10.
 
 ```{r, results = 'hide'}
 log10(100)  # log base 10
@@ -187,7 +184,7 @@ b <- a + 20
 
 Sometimes it's good practice to clear all variables from your R environment, especially if you've been working on multiple projects during the day. 
 This can be done in a couple of ways. 
-For example, you can just click `clear` in the **Environment tab** of the **Workspace and History pane** in the upper-right panel of the R Studio window. 
+For example, you can just click `clear` in the **Environment tab** of the **Workspace and History pane** in the upper-right panel of the R Studio window (broom icon). 
 The same procedure can be performed at the command line of the console or script editor pane.
 To do this, you can use the `ls` function to view a list of all the objects in the R environment:
 ```{r}
