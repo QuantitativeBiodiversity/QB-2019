@@ -1,7 +1,6 @@
 ---
-title: 'Week 1 Handout: Git and GitHub'
+title: '2\. Reproducible Science with Git and GitHub'
 author: 'Z620: Quantitative Biodiversity, Indiana University'
-date: "January 16, 2015"
 output: pdf_document
 header-includes:
 - \usepackage{graphicx}
@@ -9,44 +8,28 @@ header-includes:
 geometry: margin=2.54cm
 ---
 
-## Goal
-+ Install and configure Git on your computer
+## OVERVIEW
 
-## 1) Git Installation
-If you do not have a current Git installation, please do the following:
+All in-class work will be concucted on Mac desktop computers.
+You will use Git and GitHub on your Mac desktop computer to access and record changes to **worksheets** that contain in-class **exercises** and **assigments** that will eventually be submitted.
+The instructions below will show you how to configure github on a computer. 
+After that, you will learn how to **fork** and **clone** a GitHub repositiory. 
+Finally, you will learn how to **commit** abd **push** changes so that you can access them later on your personal computer using **fetch** and **merge** commands.  
 
-1. Open a web browser and navigate to git-scm.com/download/
-2. Select the appropriate operating system
-3. The download should start automatically
-4. Open the installer and follow the onscreen directions
+***
 
-  **On Mac**: You will need to make sure you have Xcode Command Line Tools installed.
-  To test this type `which g++` at the command line.
-  If you get `/usr/bin/g++` as a reply, then you are ready to move on.
-  
-  **On Windows**: This process will install Git Bash (msysGit). 
-  During installation, you will be asked to adjust your **PATH environment**.
-  We recommend that you select the option to "Use Git from the Windows Command Prompt".
-  This will give you the most flexibility with Git.
-  In addition, we recommend that during installation you select "Use OpenSSH" for your secure shell client with GitBash.
-  
-  During installation, you will be asked how to configure the line ending conversions.
-  
-  **On Mac**: Use"Checkout as-is, commit Unix-style line endings"
-  
-  **On Windows**: Use "Checkout Windows-style, commit Unix-style line endings"
-
-### 2) Git Test
+### 1) Git Test
 Before we get started with Git, we first need to test our current installation to make sure there aren't any issues.
 The easiest way to do this is to determine what Git version is currently installed.
-We will use **terminal** (GitBash on Windows) to accomplish this.
+We will use **Terminal** 
 
-The first thing we need to do is find and start terminal.
-On the lab computers, you can find terminal in the **Utilities Folder** in the **Dock** at the bottom of your screen.
-On your personal computer: **Mac** you can search for terminal with spotlight [Cmd+Space]; **Windows** you can find GitBash in the Start Menu.
+On the lab computers, you can find terminal in one of two ways. 
+First, you can search for terminal with spotlight [Cmd+Space]. 
+Second, you can navigate to **Utilities Folder** in Finder.
+You may want to drag Terminal to the **Dock** at the bottom of your screen, as you will frequently be using this program.
 
-1. Find terminal (or GitBash) and open a new window
-2. Type the following commands:
+1. Find Terminal and open a new window
+2. After you've opened a new Terminal window (Shell > New Window), type the following commands, which will print your current working directory (pwd), list folders in your working directory (ls), and supply the version of installed git.
 
     ```sh
     pwd
@@ -54,8 +37,10 @@ On your personal computer: **Mac** you can search for terminal with spotlight [C
     git --version
     ```
 
-## 3) Git User Configuration
-1. **Organization:** We recommend that you create a folder in your user directory (> cd ~) called '*GitHub*' to make this and future assignments easier to manage. (**Mac** Users: Do this from Terminal; **Windows** Users: Do this from GitBash)
+## 2) Git User Configuration
+1. **Organization:** We recommend that you create a folder in your user directory called '*GitHub*' to make this and future assignments easier to manage. 
+In the following code, you will move to your user directory using the `cd` (change directory) function.
+The *slashdot* (./) specifies your current directory (../ would specify the directory above your current directory) and you will make a new directory with `mkdir` function. 
 
     ```sh
     cd ~
@@ -81,8 +66,8 @@ Line endings are invisible characters that your operating system places at the e
 On Unix machines (e.g., Mac), this is the linefeed character (LF).
 On Windows machines, this is the carriage-return (CR) and linefeed (LF) characters.
 This difference in line endings between Mac and Windows causes incompatibilities between the two systems.
-However, Git is enabled to handle the differences by silently converting line endings when repos are pushed to remote servers.
-We *strongly* recommend that you configure this behavior in order to prevent any future issues when collaborating across computer platforms.
+However, Git is equipped to handle the differences by silently converting line endings when repos are pushed to remote servers.
+We *strongly* urge that you configure this behavior in order to prevent any future issues when collaborating across computer platforms.
 
     **On Mac**
 
@@ -98,7 +83,7 @@ We *strongly* recommend that you configure this behavior in order to prevent any
     
 **You are now ready to** ***Git !!!***
 
-## 4) Create User
+## 3) Create User
 1. Navigate to https://github.com
 2. Sign in with your Username and Passphrase
 3. On the top right of your screen, click on your Username
@@ -106,28 +91,28 @@ We *strongly* recommend that you configure this behavior in order to prevent any
 
     \includegraphics[height=0.75cm]{images/github_edit_btn.png}
 
-## Fork and Clone a Repo
+## 4) Fork and Clone a Repo
 1. Navigate to the QB student organization: https://github.com/QBstudents
 2. Click on the repository (repo) with your name
-2. Fork your repo by clicking on the Fork Icon in the top right of your screen<br>
+3. Fork your repo by clicking on the Fork Icon in the top right of your screen<br>
 
     \includegraphics[width=2cm]{images/github_fork_btn.png}
 
     You should now see the repo on your GitHub page.
 
-3. Clone the repo onto your local machine using the command line (terminal or GitBash).
-Replace "username" with your GitHub username and "repo" with the name of the repo in the QBStudent organization (e.g., QB2017_Lennon)
+4. Clone the repo onto your local machine using the command line (Terminal).
+Replace "username" with your GitHub username and "repo" with the name of the repo in the QBStudent organization (e.g., QB2019_Mueller)
 
     ```sh
     cd ~/GitHub
     git clone https://github.com/username/repo
-    cd ./Repo
+    cd ./repo
     git status
     ```
 
 The repo should have downloaded onto your local computer and the status should stay "all up to date". 
 
-4. Check and update remote repo location
+5. Check and update remote repo location
 The following commands will set the location of your **upstream remote repository** on the QB Course GitHub site. 
 (In the example below, you will need to replace "repo" with the name of your QB Repository)
 
@@ -138,7 +123,7 @@ The following commands will set the location of your **upstream remote repositor
     ```
     You can copy and paste the URL for your upstream repo from the GitHub website.
 
-5. Open and edit the README.md file:
+6. Open and edit the README.md file contained in your student repository:
 
     This file is a Markdown file.
     Markdown is markup language for writing and editing text that can be easily converted to other formats (e.g. HTML, PDF, Word).
@@ -152,7 +137,10 @@ The following commands will set the location of your **upstream remote repositor
     Hint: View the Markdown guide to learn about formatting and making ordered lists <https://guides.github.com/features/mastering-markdown/>. 
     When you are done, save the close the document.
 
-6. Now we need to add and commit our changes to git with the following code:
+## 5) Commit and Push
+1. You just changed the README.md file. 
+To record this, we are going to create a **commit** or "revision" with the following code. 
+That `status` function will identify the changes you made, the `add` command will add a file to the "staging area", and the `commit` command will send the changes to your repository along with a message (-m).
 
     ```sh
     git status
@@ -160,9 +148,8 @@ The following commands will set the location of your **upstream remote repositor
     git commit -m "Updated README.md with student information"
     ```
 
-7. Now push the changes to GitHub.
-Before we push our changes, we always want to check for any changes that others have made; otherwise we can create **conflicts** that need to be fixed. 
-We check for these changes using the git commands **fetch** and **merge** as follows:
+2. Now we will **push** the changes to GitHub.
+But before we do this, we always want to check for any changes that others have made; otherwise we can create **conflicts** that need to be fixed. We check for these changes using the git commands **fetch** and **merge** as follows:
 
     ```sh
     git fetch upstream
@@ -171,16 +158,20 @@ We check for these changes using the git commands **fetch** and **merge** as fol
     git status
     ```
 
-    You should now see the repo, including your recent changes, on your GitHub page.
+    You should now see the repo, including your recent changes, on your GitHub webpage.
 
-8. Navigate to your GitHub page to make sure that the file was uploaded correctly. 
-If so, submit a Pull Request to submit your file to the course instructors. <br>
+## 6) Pull Request
+After pushing your commit, you need to follow up by making a **Pull Request**.
+
+1. Navigate to your GitHub webpage to make sure that the file (e.g., README.md) was uploaded correctly. 
+If so, submit a pull request to submit your file to the course instructors. <br>
 
     \includegraphics[height=0.75cm]{images/github_pr_btn.png}
   
     The course instructors can now merge and see your changes.
     
-9. To get new assignments, you will pull (fetch & merge) your upstream repo. 
+## 7) Getting Up to Date   
+2. To get new worksheets, you will *pull* your upstream repository to your local computer using the **fetch** and **merge**. 
 This will allow any updates your instructors have made to be merged with your local documents.
 In addition to pulling your upstream repo, you always want to push any updates to your origin.
 
@@ -192,11 +183,10 @@ In addition to pulling your upstream repo, you always want to push any updates t
     git status
     ```
 
-During this course, you will receive and submit all assignments using these methods.
+During this course, you will receive **worksheets** and submit all **assignments** using these methods.
 In addition, you will use Git and GitHub to contribute to assignments in class and on your personal computers.
 
-
-## 5) Basic Git and GitHub glossary:
+## 8) Basic Git and GitHub glossary:
 The terms below will be used throughout this class.
 Some are commands that you will type into the terminal window. 
 All are defined with respect to how we will be using Git and GitHub in this class.
