@@ -1,0 +1,56 @@
+---
+title: "Control Structures and Random Numbers"
+author: "Jordan Bird and Daniel Schwartz"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+header-includes:
+   - \usepackage{array}
+output: pdf_document
+geometry: margin=2.54cm
+---
+
+## Overview
+
+In Dante's satire of hell each layer contains a new iterative task for the tortured to endure for eternity. Much of the power of computing stems from the efficiency of computers in performing small tasks in an iterative manner. This lesson introducts the concepts of control structures and random numbers. We will use these tools to understand the diversity of jellybeans flavors, but these basic tools are useful for a numbers of tasks in computing and will help you automate many of your future work flows.
+
+
+Control structures allow you to control the flow of execution of a script. Today, we will focus on the "for loop", but other common control structures include: 
+"if, else"
+"while"
+and "next"
+
+A quick tutorial of common control structures in R can be found at https://ramnathv.github.io/pycon2014-r/learn/controls.html
+
+
+Let's start by introducing the "for loop" as a control structure.
+
+```{r}
+for(i in 1:10){
+  print(i)
+}
+```
+
+In this sturcture i is a variable that will hold each interger from 1 to 10 during each successive pass through the loop.
+
+You can use this structure to move through each item of vector and perfrom any number of tasks to each element.
+
+Like printing out a list of fruits.
+```{r}
+x <- c("apples", "oranges", "bananas", "strawberries")
+
+for (i in seq(x)) {
+    print(x[i])
+}
+```
+
+Or printing out a list of fruit.
+
+```{r}
+if (!require("stringr")) install.packages("stringr")
+library(stringr)
+
+for (i in seq(x)) {
+    print(str_sub(x[i],1,-2))
+}
+```
+
+Here we saw saw an example of how two control structures could be used together. If the first statement allowed use to check and  see if the proper library for handling strings was loaded on to our R packages and the second gave use an inventive new spelling for the word strawberry.
