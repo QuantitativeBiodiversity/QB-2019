@@ -1,0 +1,42 @@
+---
+title: "Week 8: Group Diversity Projects "
+author: "Z620: Quantitative Biodiversity, Indiana University"
+date: "February 3, 2017"
+output: pdf_document
+geometry: margin=2.54cm
+---
+
+## OVERVIEW
+Over the course of the semester, you will be introduced to concepts and methods focused on the analysis of biodiversity data. 
+We would like to provide you with the opportunity to implement this knowledge using your own data or another publically available dataset.
+To this end, QB has a "Group Diversity Project". 
+You will be assigned a partner during the first week of class. 
+Your group will be responsible for the following
+
+## IDENTIFY A DATASET
+You should talk with your partner after the first class. 
+Perhaps one of you have a dataset that is appropriate for analysis. 
+If not, you will need to identify a publically available dataset.
+There are a few places you might look for biodiveristy data sets, including ESA data papers (<https://goo.gl/Ag7rr8>), the LTER data portal (<https://portal.lternet.edu/nis/home.jsp>), or the Dryad digital repository (<http://datadryad.org/>). 
+
+There are a few things that you will want to look for in a useful dataset for the QB Group Diversity Projects:
+
+1) Need a site-by-species matrix (see end of Week 1 handout), which contains presence-absence or species abundance data for multiple sites or locations.
+
+2) In week 3 we will discuss beta-diversity and how to use environmental data to explain patterns of community composition. Therefore, it would be useful if you site-by-species matrix was accompanied by a site-by-environment matrix.
+
+3) We will eventually be integrating phylogenetic information into QB (weeks 5 and 6). These datasets may be harder to come by, but they're out there if your group is interested. 
+
+4) If there's an experimental manipulation or underlying question, this will make your project more inspiring and interesting to talk about. 
+
+## INTEGRATION INTO COURSE ASSIGNMENTS
+You will become familiar with your dataset because we will be asking you questions about it from week to week as part of course assignments. 
+
+## ANALYSES
+Outside of course, you and your partner will can use techniques from QB, but also others to analyze your data to address questions relevant to biodiversity research. 
+You will need visualize the data and test hypotheses when appropriate. You will create an RMarkdown document that contains your data, code, and figures. This will be submitted by **noon on Saturday, February 24, 2017**
+
+## PRESENTATIONS
+You and your partner will give a joint, 10-15 minute presentation to QB on the last day of class (i.e., March 3) using powerpoint. 
+The slides to your powerpoint presentation should be pushed to GitHub by **noon on Saturday, February 24, 2017**
+
