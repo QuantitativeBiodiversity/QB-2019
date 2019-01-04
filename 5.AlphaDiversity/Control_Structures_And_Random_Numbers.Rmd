@@ -149,8 +149,28 @@ for ( i in 1:100){
 
 Play around with the sample size (by changing the value of `N`). How does sampe size affect observed and estimated fitness?
 
+4B. Collectors curve
+
+S.observed as a function of N. First take a single sample of size N from the source population. Subsample you sample with sampe sizes increasing from 1 to N and note the observed richness for each subsample.
+```{r}
+
+#first take a single sample of size N from the source population
+N<-1000
+sample.dj <- sample.community(digital.jelly,n = N)
+
+#generate vector to store results
+S.collectors <- rep(NA, N)
+#loop through 1:N and check S.obs
+for (i in 1:N){
+  current <-  sample.community(sample.dj,n = i)
+  S.collectors[i] <- S.obs(t(current))
+}
+
+plot(1:N, S.collectors, xlab = "Sample size",ylab = "S.obs")
+```
+What is the samllest sampe size to indicate the true richness? 
+What is the largest sample size to underestimate richness?
+What sample size wiuld you recommend for the next survey of ths community?
+
 5. using for loop generate multiple communities and repeat 2-4 with beta diversity
-
-
-
 
