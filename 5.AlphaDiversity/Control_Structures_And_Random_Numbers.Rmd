@@ -20,7 +20,7 @@ and "next"
 
 A quick tutorial of common control structures in R can be found at https://ramnathv.github.io/pycon2014-r/learn/controls.html
 
-Befor we get started lets clear up our session.
+Before we get started lets clear up our session.
 
 ```{r}
 # clear up the environment
@@ -33,8 +33,8 @@ cat("\f")
 Short intro: when and why to use
 1. syntax
 2. example
-3. "if"" accepts logical values; can accept numbers but not strings.
-4. "if"" can be complemented by an "else"
+3. "if" accepts logical values; can accept numbers but not strings.
+4. "if" can be complemented by an "else"
 5. ifelse as shorthand
 6. if-else can be strung to create hirearchy of tests
 
@@ -42,8 +42,14 @@ Short intro: when and why to use
 
 Let's start by introducing the "for loop" as a control structure.
 
-**Place holder**
-The basic syntax of the for statement
+**Syntax**
+The specific syntax of for loops will look different in other language but basics syntax remains the same.
+1. Start a loop with for
+2. Declare variable and number of iteration
+3. Tasks to perform in code block
+
+                       1.     2.         3.
+In R this looks like: for(i in 1:10){ print(i) }
 
 ```{r}
 for(i in 1:10){
@@ -65,7 +71,7 @@ for (i in seq(x)) {
 ```
 **Note that a for loop can iterate over any type of vector: logical, numerical, string. You can also iterate over vectors using indices (R counts from 1 and not form 0 like some other languages)**
 
-**This chunk below seems to be going off topic with strings. That might need to be developed as an idependrnt unit.**
+**This chunk below seems to be going off topic with strings. That might need to be developed as an independrnt unit.**
 Or printing out a list of fruit.
 
 ```{r}
@@ -77,10 +83,10 @@ for (i in seq(x)) {
 }
 ```
 
-Here we saw saw an example of how two control structures could be used together. If the first statement allowed use to check and  see if the proper library for handling strings was loaded on to our R packages and the second gave use an inventive new spelling for the word strawberry.
+Here we saw an example of how two control structures could be used together. If the first statement allowed use to check and  see if the proper library for handling strings was loaded on to our R packages and the second gave us an inventive new spelling for the word strawberry.
 
 **Note on the use of for loops**
-When possible try to avoid them. They take a long time to execute and are somewhat clumsy. consider using apply type functions.
+When possible try to avoid them. They take a long time to execute and are somewhat clumsy. Consider using apply type functions.
 
 # combining for and if
 e.g. print only numbers that can be divided by 3
