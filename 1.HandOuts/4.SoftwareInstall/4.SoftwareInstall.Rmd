@@ -1,5 +1,5 @@
 ---
-title: "4\\. Software Installation Guide"
+title: '4\. Software Installation Guide'
 author: "Z620: Quantitative Biodiversity, Indiana University"
 output: pdf_document
 geometry: margin=2.54cm
@@ -50,6 +50,9 @@ If you do not have Git yet installed, please do the following:
   During installation, you will be asked how to configure the line-ending conversions
   **On Mac**: We recommend "Checkout as-is, commit Unix-style line endings"
   **On Windows**: We recommend "Checkout Windows-style, commit Unix-style line endings"
+  
+Don't forget, you need to configure Git just as we did in the computer lab. 
+Revisit the **'2\. Reproducible Science with Git and GitHub'** Handout.
 
 ##3)  RStudio
 
