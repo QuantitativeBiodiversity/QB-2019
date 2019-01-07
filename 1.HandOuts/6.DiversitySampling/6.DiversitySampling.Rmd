@@ -1,0 +1,37 @@
+---
+title: '6\. Diversity Sampling'
+author: 'Z620: Quantitative Biodiversity, Indiana University'
+header-includes:
+   - \usepackage{array}
+output: pdf_document
+geometry: margin=2.54cm
+---
+
+## OVERVIEW
+
+Instead of generating biodiversity data from nature, we are going to use Jelly Belly jelly beans to reinforce principles of biodiversity.
+In the process, you will construct a site-by-species matrix and quantify diversity.
+Last, you will test hypotheses about how the random, stochastic process of sampling can influnece estimates of diversity. 
+
+## 1) SOURCE COMMUNITY
+We created a source community containing *XXXX-725* jellybeans. 
+In the field of ecology, this is sometimes referred to as total abundance (N). 
+We are going to treat different flavors of jellybeans as though they are different species. 
+Actually, we classified the jellybeans based on their morphotype, specifically colors, spots, and clarity. 
+Based on this, there are *XXX-26* "species" of jellybeans.
+
+## 2) VICARIANCE EVENT
+In nature, events can arise (e.g., new rivers, mountain ranges, new highways) that physically seaprate species from moving across the landscape. 
+Such events can have important implications for the ecology and evolution of populations.
+We are going to simulate this type of vicariance event (although we will not allow for subsequent growth and reproduction) and test whether this affects patterns of biodiversity. 
+Split the source community into two subcommunities and label. 
+
+## 3) SAMPLING AND SITE-BY-SPECIES MATRIX
+Half the students are then randomly assigned to sample one of the subcommunities.
+Sampled **30** individuals (i.e., jellybeans) from the beaker.
+Classify the species and abundances of jelly beans in your sample.
+Using Excel, make a spreadsheet that will serve as a site-by-species matrix.
+Make sure you include a sample identifier (student name) as well as what subcommmunity you sampled from. 
+One person should add this to their student respository and make a pull request. 
+
+
