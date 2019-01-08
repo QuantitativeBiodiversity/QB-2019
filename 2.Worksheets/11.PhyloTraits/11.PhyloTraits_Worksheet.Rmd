@@ -1,0 +1,418 @@
+---
+title: "Phylogenetic Diversity - Traits"
+author: "Student Name; Z620: Quantitative Biodiversity, Indiana University"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: pdf_document
+geometry: margin=2.54cm
+---
+
+## OVERVIEW
+
+Up to this point, we have been focusing on patterns taxonomic diversity in Quantitative Biodiversity. 
+Although taxonomic diversity is an important dimension of biodiversity, it is often necessary to consider the evolutionary history or relatedness of species. 
+The goal of this exercise is to introduce basic concepts of phylogenetic diversity. 
+
+After completing this exercise you will be able to:
+
+1.  create phylogenetic trees to view evolutionary relationships from sequence data
+2.  map functional traits onto phylogenetic trees to visualize the distribution of traits with respect to evolutionary history
+3.  test for phylogenetic signal within trait distributions and trait-based patterns of biodiversity
+
+## Directions:
+
+1. Change "Student Name" on line 3 (above) with your name.
+2. Complete as much of the exercise as possible during class; what you do not complete in class will need to be done on your own outside of class.
+3. Use the handout as a guide; it contains a more complete description of data sets along with the proper scripting needed to carry out the exercise.
+4. Be sure to **answer the questions** in this exercise document; they also correspond to the handout.
+Space for your answer is provided in this document and indicated by the ">" character.
+If you need a second paragraph be sure to start the first line with ">".
+5. Before you leave the classroom, **push** this file to your GitHub repo.
+6. For homework, follow the directions at the bottom of this file. 
+7. When you are done, **Knit** the text and code into a PDF file.
+8. After Knitting, please submit the completed exercise by creating a **pull request** via GitHub.
+Your pull request should include this file *PhyloTraits_exercise.Rmd* and the PDF output of `Knitr` (*PhyloTraits_exercise.pdf*).
+
+
+## 1) SETUP
+
+Typically, the first thing you will do in either an R script or an RMarkdown file is setup your environment. 
+This includes things such as setting the working directory and loading any packages that you will need.
+
+In the R code chunk below, provide the code to:  
+1. clear your R environment,  
+2. print your current working directory,  
+3. set your working directory to your "*/Week6-PhyloTraits*" folder, and  
+4. load all of the required R packages (be sure to install if needed).  
+
+```{r}
+rm(list = ls())
+getwd()
+setwd("~/GitHub/QB-2017/Week6-PhyloTraits")
+
+```
+
+## 2) DESCRIPTION OF DATA
+
+The maintenance of biodiversity is thought to be influenced by **trade-offs** among species in certain functional traits. 
+One such trade-off involves the ability of a highly specialized species to perform exceptionally well on a particular resource compared to the performance of a generalist. 
+In this exercise, we will take a phylogenetic approach to mapping phosphorus resource use onto a phylogenetic tree while testing for specialist-generalist trade-offs. 
+
+
+## 3) SEQUENCE ALIGNMENT
+
+***Question 1***: Using less or your favorite text editor, compare the `p.isolates.fasta` file and the `p.isolates.afa` file. 
+Describe the differences that you observe between the files. 
+
+> ***Answer 1***: 
+
+In the R code chunk below, do the following:
+1. read your alignment file,
+2. convert the alignment to a DNAbin object,
+3. select a region of the gene to visualize (try various regions), and
+4. plot the alignment using a grid to visualize rows of sequences.
+
+```{r}
+package.list <- c('ape', 'seqinr', 'phylobase', 'adephylo', 'geiger', 'picante', 'stats', 'RColorBrewer', 'caper', 'phylolm', 'pmc', 'ggplot2', 'tidyr', 'dplyr', 'phangorn', 'pander') 
+for (package in package.list) {
+  if (!require(package, character.only=TRUE, quietly=TRUE)) {
+    install.packages(package)
+    library(package, character.only=TRUE)
+  }
+}
+
+```
+
+***Question 2***:  Make some observations about the `muscle` alignment of the 16S rRNA gene sequences for our bacterial isolates and the outgroup, *Methanosarcina*, a member of the domain archaea. 
+Move along the alignment by changing the values in the `window` object. 
+
+a. Approximately how long are our reads?  
+b. What regions do you think would are appropriate for phylogenetic inference and why?  
+
+> ***Answer 2a***:   
+> ***Answer 2b***:  
+
+## 4) MAKING A PHYLOGENETIC TREE
+
+Once you have aligned your sequences, the next step is to construct a phylogenetic tree.
+Not only is a phylogenetic tree effective for visualizing the evolutionary relationship among taxa, but as you will see later, the information that goes into a phylogenetic tree is needed for downstream analysis. 
+
+### A. Neighbor Joining Trees
+
+In the R code chunk below, do the following:  
+1. calculate the distance matrix using `model = "raw"`,  
+2. create a Neighbor Joining tree based on these distances,  
+3. define "Methanosarcina" as the outgroup and root the tree, and  
+4. plot the rooted tree. 
+
+```{r}
+
+
+```
+
+***Question 3***: What are the advantages and disadvantages of making a neighbor joining tree?   
+
+
+> ***Answer 3***:  
+ 
+
+
+### B) SUBSTITUTION MODELS OF DNA EVOLUTION 
+
+In the R code chunk below, do the following:  
+1. make a second distance matrix based on the Felsenstein 84 substitution model,  
+2. create a saturation plot to compare the *raw* and *Felsenstein (F84)* substitution models,  
+3. make Neighbor Joining trees for both, and  
+4. create a cophylogenetic plot to compare the topologies of the trees.
+
+```{r}
+
+
+```
+
+In the R code chunk below, do the following:  
+1. pick another substitution model,  
+2. create and distance matrix and tree for this model,  
+3. make a saturation plot that compares that model to the *Felsenstein (F84)* model,  
+4. make a cophylogenetic plot that compares the topologies of both models, and  
+5. be sure to format, add appropriate labels, and customize each plot.
+
+```{r}
+
+
+```
+
+***Question 4***:  
+
+a. Describe the substitution model that you chose. What assumptions does it make and how does it compare to the F84 model?
+b. Using the saturation plot and cophylogenetic plots from above, describe how your choice of substitution model affects your phylogenetic reconstruction. 
+If the plots are inconsistent with one another, explain why.
+c. How does your model compare to the *F84* model and what does this tell you about the substitution rates of nucleotide transitions?
+
+> ***Answer 4a***:   
+> ***Answer 4b***:   
+> ***Answer 4c***:   
+
+### C) ANALYZING A MAXIMUM LIKELIHOOD TREE
+
+In the R code chunk below, do the following:  
+1. Read in the maximum likelihood phylogenetic tree used in the handout.
+2. Plot bootstrap support values onto the tree
+
+```{r}
+
+
+```
+
+***Question 5***:  
+
+a) How does the maximum likelihood tree compare the to the neighbor-joining tree in the handout? 
+If the plots seem to be inconsistent with one another, explain what gives rise to the differences.
+
+b) Why do we bootstrap our tree?
+
+c) What do the bootstrap values tell you? 
+
+d) Which branches have very low support? 
+
+e) Should we trust these branches? 
+
+> ***Answer 5a***:   
+> ***Answer 5b***:   
+> ***Answer 5c***:   
+> ***Answer 5d***:   
+> ***Answer 5e***:   
+
+
+## 5) INTEGRATING TRAITS AND PHYLOGENY
+
+### A. Loading Trait Database
+
+In the R code chunk below, do the following:  
+1. import the raw phosphorus growth data, and  
+2. standardize the data for each strain by the sum of growth rates.
+
+```{r}
+
+
+```
+
+### B. Trait Manipulations
+
+In the R code chunk below, do the following:  
+1. calculate the maximum growth rate ($\mu_{max}$) of each isolate across all phosphorus types,  
+2. create a function that calculates niche breadth (*nb*), and  
+3. use this function to calculate *nb* for each isolate.
+
+```{r}
+
+
+```  
+
+### C. Visualizing Traits on Trees
+
+In the R code chunk below, do the following:  
+1. pick your favorite substitution model and make a Neighbor Joining tree,  
+2. define your outgroup and root the tree, and  
+3. remove the outgroup branch.
+
+```{r}
+
+
+```
+
+In the R code chunk below, do the following:  
+1. define a color palette (use something other than "YlOrRd"),  
+2. map the phosphorus traits onto your phylogeny,  
+3. map the *nb* trait on to your phylogeny, and  
+4. customize the plots as desired (use `help(table.phylo4d)` to learn about the options).
+
+
+```{r}
+
+
+```
+
+***Question 6***:  
+
+a) Make a hypothesis that would support a generalist-specialist trade-off.
+
+b) What kind of patterns would you expect to see from growth rate and niche breadth values that would support this hypothesis?
+
+> ***Answer 6a***:   
+> ***Answer 6b***:   
+
+## 6) HYPOTHESIS TESTING
+
+### A) Phylogenetic Signal: Pagel's Lambda 
+
+In the R code chunk below, do the following:  
+1. create two rescaled phylogenetic trees using lambda values of 0.5 and 0,   
+2. plot your original tree and the two scaled trees, and  
+3. label and customize the trees as desired.
+
+```{r}
+
+
+```
+
+In the R code chunk below, do the following:  
+1. use the `fitContinuous()` function to compare your original tree to the transformed trees.
+
+```{r}
+
+
+```
+
+***Question 7***:  There are two important outputs from the `fitContinuous()` function that can help you interpret the phylogenetic signal in trait data sets. 
+a. Compare the lambda values of the untransformed tree to the transformed (lambda = 0).
+b. Compare the Akaike information criterion (AIC) scores of the two models. Which model would you choose based off of AIC score (remember the criteria that the difference in AIC values has to be at least 2)?
+c. Does this result suggest that there's phylogenetic signal?
+
+> ***Answer 7a***:  
+> ***Answer 7b***:  
+> ***Answer 7c***:  
+
+### B) Phylogenetic Signal: Blomberg's K 
+
+In the R code chunk below, do the following:  
+1. correct tree branch-lengths to fix any zeros,  
+2. calculate Blomberg's K for each phosphorus resource using the `phylosignal()` function,  
+3. use the Benjamini-Hochberg method to correct for false discovery rate, and  
+4. calculate Blomberg's K for niche breadth using the `phylosignal()` function.
+
+```{r}
+
+
+```
+
+***Question 8***: Using the K-values and associated p-values (i.e., "PIC.var.P"") from the `phylosignal` output, answer the following questions:
+
+a.  Is there significant phylogenetic signal for niche breadth or standardized growth on any of the phosphorus resources?  
+b.  If there is significant phylogenetic signal, are the results suggestive of clustering or overdispersion?  
+
+> ***Answer 8a***:   
+> ***Answer 8b***:   
+
+### C.  Calculate Dispersion of a Trait
+
+In the R code chunk below, do the following:  
+1. turn the continuous growth data into categorical data,  
+2. add a column to the data with the isolate name,  
+3. combine the tree and trait data using the `comparative.data()` function in `caper`, and  
+4. use `phylo.d()` to calculate *D* on at least three phosphorus traits.
+
+```{r}
+
+
+```
+
+***Question 9***: Using the estimates for *D* and the probabilities of each phylogenetic model, answer the following questions:
+
+a.  Choose three phosphorus growth traits and test whether they are significantly clustered or overdispersed?  
+b.  How do these results compare the results from the Blomberg's K analysis?  
+c.  Discuss what factors might give rise to differences between the metrics.  
+
+> ***Answer 9a***:  
+> ***Answer 9b***:  
+> ***Answer 9c***:  
+
+## 7) PHYLOGENETIC REGRESSION
+
+In the R code chunk below, do the following:  
+1. Load and clean the mammal phylogeny and trait dataset,
+2. Fit a linear model to the trait dataset, examining the relationship between mass and BMR,
+2. Fit a phylogenetic regression to the trait dataset, taking into account the mammal supertree
+
+```{r}
+
+
+```
+  
+
+a. Why do we need to correct for shared evolutionary history?
+b. How does a phylogenetic regression differ from a standard linear regression?
+c. Interpret the slope and fit of each model. Did accounting for shared evolutionary history improve or worsten the fit?
+d. Try to come up with a scenario where the relationship between two variables would completely disappear when the underlying phylogeny is accounted for.
+
+> ***Answer 10a***:  
+> ***Answer 10b***:  
+> ***Answer 10c***:  
+> ***Answer 10d***:  
+
+
+## 7) SYNTHESIS
+
+Below is the output of a multiple regression model depicting the relationship between the maximum growth rate ($\mu_{max}$) of each bacterial isolate and the niche breadth of that isolate on the 18 different sources of phosphorus. 
+One feature of the study which we did not take into account in the handout is that the isolates came from two different lakes. 
+One of the lakes is an very oligotrophic (i.e., low phosphorus) ecosystem named Little Long (LL) Lake. 
+The other lake is an extremely eutrophic (i.e., high phosphorus) ecosystem named Wintergreen (WG) Lake.
+We included a "dummy variable" (D) in the multiple regression model (0 = WG, 1 = LL) to account for the environment from which the bacteria were obtained. For the last part of the assignment, plot nich breadth vs. $\mu_{max}$ and the slope of the regression for each lake. Be sure to color the data from each lake differently. 
+
+```{r, echo=FALSE, fig.width=6, fig.height=4}
+p.growth <- read.table("./data/p.isolates.raw.growth.txt", sep = "\t", header = TRUE, row.names = 1)
+umax <- (apply(p.growth, 1, max)) # calculate max growth
+lake <- ifelse(grepl("WG",row.names(p.growth)),'WG', 'LL') # make an empty vector for lake id
+tradeoff <- data.frame(nb,umax,lake) # make new data frame
+
+D <- (lake == "LL") * 1
+p.growth.std <- p.growth / (apply(p.growth, 1, sum))
+
+levins <- function(p_xi = ""){
+  p = 0
+  for (i in p_xi){
+    p = p + i^2
+    }
+  nb = 1 / (length(p_xi) * p)
+  return(nb)
+  }
+
+nb <- as.matrix(levins(p.growth.std))
+
+fit<-lm(log10(umax) ~ nb + D + nb * D)
+
+LL.nb <- subset(nb,lake == "LL")		
+WG.nb <- subset(nb,lake == "WG")		
+  		  
+LL.umax <- subset(umax,lake == "LL")		
+WG.umax<-subset(umax,lake == "WG")		
+par(mar=c(4,4,0,1)+ 0.1)		
+plot(LL.nb, log10(LL.umax), axes = F, xlab = "Niche Breadth", ylab = "Maximum Growth Rate", 		
+ pch = 21, cex = 2.0, las = 1, col = "black", bg = "white",		
+ xlim=c(0,1), ylim = c(-2, 1))		
+points(WG.nb,log10(WG.umax),pch=21,cex=2,col="black", bg="black")		
+box()		
+ticks <- c(0.01, 0.1, 1, 10)		
+axis(side = 1, labels = T, cex.axis = 1)		
+axis(side = 2, las = 1, cex.axis = 1, labels = ticks,		
+  at = log10(ticks))		
+axis(3,labels = F)		
+axis(side = 4, at = log10(ticks), labels = F)		
+
+curve(fit$coefficients[1] + fit$coefficients[2] * x, from = min(WG.nb - 0.1), 		
+  to = max(WG.nb +0.1), add = TRUE, lty = 2)		
+Int <- fit$coefficients[1] + fit$coefficients[3]		
+Slp <- fit$coefficients[2] + fit$coefficients[4]		
+curve((Int) + (Slp) * x, from = min(LL.nb - 0.08), to =max(LL.nb + 0.1), add = TRUE, lty = 2)		
+    		    
+legend("topleft", legend = c("LL","WG"), pch = c(1,16), cex = 1, col = "black", bty = "n")
+summary(fit)		
+coefficients <- coefficients(fit) # model coefficients		
+confit <- confint(fit,level=0.95) # 95% CI for parameters		
+predicted <- fitted(fit) # predicted values		
+residuals <- residuals(fit) # residuals		
+anova <- anova(fit) # anova table		
+vcov <- vcov(fit) # covariance matrix for model parameters		
+influence <- influence(fit) # regression diagnostics		
+par(mfrow = c(2, 2), mar = c(5.1 ,4.1 ,4.1 ,2.1))		
+plot(fit)		
+
+  
+
+```
+
+***Question 11***: Based on your knowledge of the traits and their phylogenetic distributions, what conclusions would you draw about our data and the evidence for a generalist-specialist tradeoff? 
+
+
+> ***Answer 11***:
+
+
