@@ -68,7 +68,8 @@ Quantitative Biodiversity is organized around the following learning objectives
 
 ### Late Assignments
 If submitted less than 24 hours after the deadline, grade on that assignment will automatically be reducced 50 % prior to grading.
-Assignments sumbitted > 24 hours after deadline will receive no credit. 
+Assignments sumbitted > 24 hours after deadline will receive no credit.
+You will receive an incomplete for the course if you receive two or more no-credit evaluations or if you receive four or more half-credit evaluations. 
 
 ### Attendance
 Given the small number of class meetings, attendence is required. Absences will negatively affect a student's grade. Any conflicts should be communicated to the instructor as early as possible, preferably before the beginning of the semester.
