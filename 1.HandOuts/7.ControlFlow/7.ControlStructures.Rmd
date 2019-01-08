@@ -12,11 +12,11 @@ geometry: margin=2.54cm
 In Dante's satire of hell each layer contains a new iterative task for the tortured to endure for eternity. Much of the power of computing stems from the efficiency of computers in performing small tasks in an iterative manner. This lesson introducts the concepts of control structures and random numbers. We will use these tools to understand the diversity of jellybeans flavors, but these basic tools are useful for a numbers of tasks in computing and will help you automate many of your future work flows.
 
 ## 1) INTRODUCTION TO CONTROL STRUCTURES
-Control structures allow you to control the flow of execution of a script. Today, we will focus on the "for loop", but other common control structures include: 
+Control structures allow you to control the flow of execution of a script (series of commands). Today, we will focus on the "for" loop, but other common control structures include: 
 "if, else"
 "while"
 and "next"
-
+You can find the documentation by typing `?Control` in the command line.
 A quick tutorial of common control structures in R can be found at https://ramnathv.github.io/pycon2014-r/learn/controls.html
 
 
@@ -67,7 +67,8 @@ for (i in seq(x)) {
 }
 ```
 **Note that a for loop can iterate over any type of vector: logical, numerical, string. You can also iterate over vectors using indices (R counts from 1 and not form 0 like some other languages)**
-
+Compare iterating over a vector with it value and iterating by index
+for (i in x) vd. for (i in seq(x))
 **This chunk below seems to be going off topic with strings. That might need to be developed as an independent unit.**
 Or printing out a list of fruit.
 
