@@ -16,7 +16,7 @@ Control structures allow you to control the flow of execution of a script. Today
 "if, else"
 "while"
 and "next"
-
+Have a look at `?Control` for documentation.  
 A quick tutorial of common control structures in R can be found at https://ramnathv.github.io/pycon2014-r/learn/controls.html
 
 
@@ -28,22 +28,24 @@ rm(list = ls()) # clear working directory
 ### A. 'If' and 'Else' Logical Tests
 
 Short intro: when and why to use
-1. The general syntax for an "if, else" control stucture in the R language.
-   if (condition) {
-   	# do something
-   } else {
-   	# do something else
-   }
+<align properly>
+1. The general syntax for an "if, else" control stucture in the R language. 
+   if (condition) {  
+   	# do something  
+   } else {  
+   	# do something else  
+   }  
 2. An example of the an "if, else" control stucture.  
 
-```{r}
+```{r, results='hide'}
 x <- 1:15
 if (sample(x, 1) <= 10) {
-   print("x is less than 10")
+   print(paste("x is",x ,"and is less than 10"))
 } else {
-   print("x is greater than 10")
+   print(paste("x is",x,"and is greater than 10"))
 }
 ```
+<align properly>
 3. "if" accepts logical values; can accept numbers but not strings.
 4. "if" can be complemented by an "else"
 5. ifelse as shorthand
@@ -62,7 +64,7 @@ The specific syntax of for loops will look different in other language but basic
                        1.     2.         3.
 In R this looks like: for(i in 1:10){ print(i) }
 
-```{r}
+```{r, results='hide'}
 for(i in 1:10){
   print(i)
 }
@@ -80,7 +82,14 @@ for (i in seq(x)) {
     print(x[i])
 }
 ```
-**Note that a for loop can iterate over any type of vector: logical, numerical, string. You can also iterate over vectors using indices (R counts from 1 and not form 0 like some other languages)**
+
+Note that a for loop can iterate over any type of vector: logical, numerical, string. You can also iterate over vectors using indices (R counts from 1 and not form 0 like some other languages)
+```{r}
+for (i in x) {
+    print(i)
+}
+```
+
 
 Or get the number of characters in each item of the same list.
 
@@ -93,13 +102,13 @@ for (i in seq(x)) {
 **Note on the use of for loops**
 When possible try to avoid them. They take a long time to execute and are somewhat clumsy. Consider using apply type functions.
 
-The sapply function can be used to get the same results as the loop above.
+The sapply function can be used to get the same results as the loop above. Check out `?apply` and `?lapply`.  
 
 ```{r}
 sapply(x, nchar)
 ```
 
-### Combining for and if
+### C. Combining for and if
 e.g. print only numbers that can be divided by 3
 
 ```{r}
@@ -110,7 +119,7 @@ for(i in 1:10){
 }
 ```
 
-### While loops
+### D. While loops
 Another loop control structure is the "while loop".
 
 An example of the while loop.
@@ -126,9 +135,15 @@ Notice that a while loop needs an specific break point.
 
 What would happen if the code block was changed to subtract 1 from i in each iteration of the loop?
 
-### 2) REVISITNG JELLY BEAN WITH CONTROL STRUCTURE
+## 2) REVISITNG JELLY BEAN WITH CONTROL STRUCTURE
 
 ### A. Generate a Source Community by Drawing from Lognormal Distribution
+* We want to generate source comunity
+* R has built-in functions for statistical distributions (see`Distributions')
+* for each distribution there are 4 functions: density, probability, qunatile and random sample.
+* Biological communities often described by log-normal so we will use that distribution.
+* random are not really random, rather pseudo-random. We can get the same "random" sample by setting the seed
+
 ```{r}
 set.seed(6)
 digital.jelly <- round(rlnorm(n = 20, meanlog = 5 ))
@@ -142,6 +157,9 @@ Explain the details of commands above
 ### B. Sample the Source Community
 
 Function to generate a single sample
+* explain the rational: sample and the summarize sample
+* highlight the use of for loop in binning
+* mention the sample is iterative as well, but built in function ("sample") negates the use of loop.
 ```{r}
 sample.community <- function (x,n){
   survey <- sample(seq(x),size = n, replace = T,prob = x)
@@ -170,15 +188,14 @@ S.chao1 <- function(x = ""){
 
 Repeat sampling and calculations 100 times using for loop. 
 Look at estimated prameter distribution along with real value.
-
-**The code below works well as script but not in markdown...*
+* for loop used to investigate repeatedd random samling and behavior of index.
 ```{r}
 S.true <- length(digital.jelly)
 plot(0, t = "n", xlim = c(S.true/2, 1.5 * S.true), ylim = c(S.true/2, 1.5 * S.true), 
      xlab = "S.obs", ylab = "S.chao1")
 abline(h = S.true, v = S.true, col = "red")
 
-N <- 100
+N <- 200
 
 for ( i in 1:100){
   sample.dj <- sample.community(digital.jelly,N)
@@ -188,11 +205,12 @@ for ( i in 1:100){
 }
 ```
 
-Play around with the sample size (by changing the value of `N`). How does sampe size affect observed and estimated fitness?
+Play around with the sample size (by changing the value of `N`). How does sample size affect observed and estimated fitness?
 
 ### E. Collector's Curve
 
 S.observed as a function of N. First take a single sample of size N from the source population. Subsample you sample with sampe sizes increasing from 1 to N and note the observed richness for each subsample.
+
 ```{r}
 
 #first take a single sample of size N from the source population
@@ -213,5 +231,14 @@ What is the samllest sampe size to indicate the true richness?
 What is the largest sample size to underestimate richness?
 What sample size wiuld you recommend for the next survey of ths community?
 
-5. using for loop generate multiple communities and repeat 2-4 with beta diversity
+### Shannon diversity
+* show how to translate mathematical notation of summation into loop, i.e. how to transfer the logic between math and code
+
+
+** consider whether to add this next section**
+### Beta diversity
+* nested for loops
+*how to avoid them
+
+
 
