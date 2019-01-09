@@ -159,7 +159,7 @@ Computers can't generate truly random number, but rather psedorandom numbers. Th
 In the jelly bean excercise you had a jar of jelly beans simulationg a biological community. To generate our digital community we will recall that the species abundances in biological communities often follows the log-normal distribution. To simullate a community we will draw a seuence of random numbers from the log-normal dittribution. Each of thes numbers will represent the abundance of a simgle species in our simulated community. 
 
 ```{r}
-# for reproducible results we can set the seed
+# for reproducible results we will set the seed
 set.seed(6)
 # draw 20 random numbers from l0g-normal distribution with a mean of 5 (log scale)
 jelly.jar <- rlnorm (n = 20, meanlog = 5 )
@@ -210,6 +210,8 @@ Note that in this implementation of the algorithm above we drew multiple samples
 
 Let's compare the rank abundance curves of a sample to our source community
 ```{r}
+# for reproducible results we will set the seed
+set.seed(3)
 # sample using our fuction
 sample.jelly <- sample.community(x=jelly.jar,n=100)
 # generate RAC using vegan
@@ -222,47 +224,51 @@ plot(RACsample, las = 1, cex.lab = 1.4, cex.axis = 1.25, xlim=c(1,20), main = "S
 
 How simmilar or different is the sample from the source community?
 
-### C. Calculate Alpha Diversity
+### C. Estimating Richness in Reapeated Samples
+
+We will next use for loops to explore how well richness indices succeed in estimating the rrue richness of the source community. We will use The function `estimateR` of the `vegan` package to calculate diversity indices.
 
 ```{r}
-# Functions from alpha diversity handout
-S.obs <- function(x = ""){
-  rowSums(x > 0) * 1
-}
 
-S.chao1 <- function(x = ""){
-  S.obs(x) + (sum(x == 1)^2) / (2 * sum(x == 2))
-}
+S <- estimateR(sample.jelly)
+S
 ```
 
-### D. Resampling
+How well these 3 indinces estimete the true diversity? Using our simulated community we can test that! We will draw repeated samples from our source community and estimate *S* for each of them. Lastly we will look at the distribution of the results compared to the true *S*.
 
-Repeat sampling and calculations 100 times using for loop. 
-Look at estimated prameter distribution along with real value.
-* for loop used to investigate repeated random samling and behavior of index.
 ```{r}
-S.true <- length(jelly.jar)
-plot(0, t = "n", xlim = c(S.true/2, 1.5 * S.true), ylim = c(S.true/2, 1.5 * S.true), 
-     xlab = "S.obs", ylab = "S.chao1")
-abline(h = S.true, v = S.true, col = "red")
-
-N <- 200
-
-for ( i in 1:100){
-  sample.dj <- sample.community(jelly.jar,N)
-  x<-S.obs(t(sample.dj))
-  y<-S.chao1(t(sample.dj))
-  points(x,y)
+# Number of individuales per sample
+n <- 100
+# Number of repeated samples
+N <- 1000
+# initialize matrix to store results
+repeated.S <- matrix(NA, nrow = N, ncol = length(S))
+colnames(repeated.S) <- names(S)
+# resample and store results
+for (i in seq(N)){
+  sample.jelly <- sample.community(x=jelly.jar,n=n)
+  repeated.S[i,] <- as.vector(estimateR(sample.jelly))
 }
+
+#plot distribution of results as histogram
+plot.new()
+par(mfrow=c(1,3))
+for (i in c("S.obs", "S.chao1", "S.ACE")){
+  hist(repeated.S[,i],prob=TRUE,  cex.lab = 1.4, cex.axis = 1.25, xlab=i, main = NULL, col="grey")
+  #add dashed line to mark true S
+  abline(v=length(jelly.jar), lty=2, lwd=3)
+}
+
 ```
 
-Play around with the sample size (by changing the value of `N`). How does sample size affect observed and estimated fitness?
+
+Play around with the sample size (by changing the value of `n`). How does sample size affect observed and estimated richness?
 
 ### E. Collector's Curve
 
 S.observed as a function of N. First take a single sample of size N from the source population. Subsample you sample with sampe sizes increasing from 1 to N and note the observed richness for each subsample.
 
-```{r}
+```{r, eval=FALSE}
 
 #first take a single sample of size N from the source population
 N<-1000
