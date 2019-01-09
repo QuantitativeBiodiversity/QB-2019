@@ -18,12 +18,12 @@ We will use these tools to understand the diversity of jellybeans flavors, but c
 ## 1) INTRODUCTION TO CONTROL STRUCTURES
 Control structures allow you to control the flow of execution in a script. 
 These blocks of code serve as algorithms that act on variables in user-defined way.
-Often, control structures are embedded in functions to cary out sequential, selective, and repetitive tasks. 
-Some of the most commonly used control structures include "if, else" statements, "while" loops, and "next" statments. 
+Often, control structures are embedded in functions to carry out sequential, selective, and repetitive tasks. 
+Some of the most commonly used control structures include "if, else" statements, "while" loops, and "next" statements. 
 Today, we will focus mostly on the "for loop".
 
 There is a lot of information on control structures elsewhere. 
-A succint tutorial of common control structures in R can be found at https://ramnathv.github.io/pycon2014-r/learn/controls.html
+A succinct tutorial of common control structures in R can be found at https://ramnathv.github.io/pycon2014-r/learn/controls.html
 You can also take a look at `?Control` for documentation. 
 
 ```{r, results = 'hide'}
@@ -36,14 +36,14 @@ The 'if' statement evaluates a condition.
 Based on the outcome of that evaluation, an 'else` statement can be used to execute a specific code.
 The following text will walk you through how to use and implement 'if, else' control structures. 
 
-1. The general syntax for an "if, else" control stucture in the R language: 
+1. The general syntax for an "if, else" control structure in the R language: 
    if (condition) {  
    	# do something  
    } else {  
    	# do something else  
    }  
    
-2. An example of the an "if, else" control stucture.  
+2. An example of the an "if, else" control structure.  
 
 ```{r, results='hide'}
 x <- 1:15
@@ -60,10 +60,10 @@ if (sample(x, 1) <= 10) {
 
 5. `ifelse()` is a function that can be used in R (e.g., ifelse(test_expression, x, y))
 
-6. if-else can be strung to create hirearchy of tests  
+6. if-else can be strung to create hierarchy of tests  
 
 ### B. For-Loops
-These control structures execute an interative task. 
+These control structures execute an iterative task. 
 For-loops are made up of two basic parts. 
 The first part, sometimes referred to as the header, specifies the iteration and has a loop counter. 
 The second part of the for-loop is the body, which contains an operation that is executed upon each iteration. 
@@ -84,9 +84,9 @@ for(i in 1:10){
 }
 ```
 
-In the above for-loop sturcture, i is a variable that will hold each interger from 1 to 10 during each successive pass through the loop.  
+In the above for-loop structure, i is a variable that will hold each integer from 1 to 10 during each successive pass through the loop.  
 
-You can use this structure to move through each item of vector and perfrom any number of tasks to each element.  
+You can use this structure to move through each item of vector and perform any number of tasks to each element.  
 
 For example, let's print out a list of fruits.
 ```{r, results='hide'}
@@ -126,7 +126,7 @@ print(len)
 While for-loops are powerful and commonly used, there are some downsides. 
 They take a long time to execute and are somewhat clumsy.
 In R, there are some other ways to achieve the same power. 
-For example, the function `tapply()` executes a function to sepcific elements of a dataframe, `apply()` executes a function (e.g., mean) to the rows or columns of a data frame, and `sapply()` peforms a function on list or array.  
+For example, the function `tapply()` executes a function to specific elements of a data frame, `apply()` executes a function (e.g., mean) to the rows or columns of a data frame, and `sapply()` performs a function on list or array.  
 
 These functions are easier to implement and are also more computationally efficient. 
 Check out `?tapply`, ?apply`, `?sapply`.
@@ -153,7 +153,7 @@ for(i in 1:10){
 
 ### D. While loops  
 Another loop control structure is the "while loop".
-While loops are sort of like repeating "if" statement; that is, it continues to operate until a conditional statment changes (e.g., "true" becomes "false"). 
+While loops are sort of like repeating "if" statement; that is, it continues to operate until a conditional statement changes (e.g., "true" becomes "false"). 
 
 Here is an example of a while loop.  
 
@@ -171,19 +171,19 @@ What would happen if the code block was changed to subtract 1 from i in each ite
 If you dare, try this out!
 
 ## 2) APPLYING CONTROL STUCTURE TO DIVERSITY DATA
-The control structures discussed above have unlimited applications in the realm of quatitative methods. 
+The control structures discussed above have unlimited applications in the realm of quantitative methods. 
 In this section you will learn how to apply these structures to biodiversity data, specifically the jelly bean communities that you just characterized. 
-But before we can do that we need to get familiar with another powerful family of functions in R: built-in probability ditributions.  
+But before we can do that we need to get familiar with another powerful family of functions in R: built-in probability distributions.  
 
 ### A. Statistical Distributions 
 
 Many groups of quantities can be described as frequency distributions. 
-You are probably familiar with the Normal ditribution and its hallmark bell curve. 
+You are probably familiar with the Normal distribution and its hallmark bell curve. 
 R has built-in functions describing many statistical distributions. 
 You can find them listed in the R Documentation by typing `?Distributions` in the console.  
 Choose your favorite distribution and look at its specific documentation. 
-You will find that each disribution has four functions asociated with it: **d**ensity, **p**robability, **q**uantiles and **r**andom sample. 
-For example the uniform distribution (an equal probaility for all values) is called *unif* in R and has the following four functions.     
+You will find that each distribution has four functions associated with it: **d**ensity, **p**robability, **q**uantiles and **r**andom sample. 
+For example the uniform distribution (an equal probability for all values) is called *unif* in R and has the following four functions.     
 
 ```{r, eval=FALSE}
 dunif(x, min = 0, max = 1, log = FALSE)                       # Density  
@@ -193,7 +193,7 @@ runif(n, min = 0, max = 1)                                    # Random Sample
 ```
 
 **A Brief Note on Random Sampling by Computers**  
-Computers can't generate truly random number, but rather pseudorandom numbers. 
+Computers can't generate truly random number, but rather pseudo-random numbers. 
 This is achieved by a function that generates sequences of numbers that behave like random numbers, but are completely determined by the functions input known as a *seed*. 
 Put in the same seed twice and you will get the same sequence of numbers.   
 
@@ -255,7 +255,7 @@ sample.community <- function (x,n){
 ```
 
 Note that we drew multiple samples using the `sample` function. 
-This function iterated over the samlping step `n` times. 
+This function iterated over the sampling step `n` times. 
 Next we wrote a for-loop to iterate over those samples and bin them into our species list.  
 
 Let's compare the rank abundance curves of a sample to our source community.  
@@ -278,8 +278,8 @@ Question: How similar or different is the sample from the source community?
 
 **Testing input to a function using the `if` statement**  
 Functions work very well if they are fed the right kind of input. 
-But pass some inapropriate argument and things will go wrong, and posssibly horribly wrong. 
-To demostrate this idea try and sample the `jelly.jar` with a sample size larger than the size of the community.  
+But pass some inappropriate argument and things will go wrong, and possibly horribly wrong. 
+To demonstrate this idea try and sample the `jelly.jar` with a sample size larger than the size of the community.  
 ```{r, eval=FALSE}
 sample.community(x=jelly.jar,n=(sum(jelly.jar)+1))
 ```
@@ -291,7 +291,7 @@ R produces an error message:
 
 The first line of this message indicates the function that produced it. 
 In this case it is the `sample.int()` function. 
-This function is nested withhin the `sample()` function (you can see the code for `sample` by typing *sample* without brackets in the console). 
+This function is nested within the `sample()` function (you can see the code for `sample` by typing *sample* without brackets in the console). 
 The second line of the error message tells us that you cannot take more sample the the population size unless you set the `replace` argument to TRUE. 
 This message is very helpful.
 
@@ -330,7 +330,7 @@ sample.community(x=jelly.jar,n=(sum(jelly.jar)+1))
 > Error in sample.community(x = jelly.jar, n = (sum(jelly.jar) + 1)) : 
 >  'Sample size cannot exceed total size of community  
 
-Of course, there are many ways by which a functions arfuments mcan be wrong, to rephrase Tolstoy _"All happy functions are alike; each unhappy function is unhappy in its own way"_. We demonstrated a logical error. Another common error is passing data of the wrong type to a function, such as a string when a number is called for. These errors can be caught using the *is.type* functions, where *type* is relaced by the type of interest (e.g.`is.numeric`). While We cannot prevent all errors, when writing a function it is worth taking a moment to think about how to prevent some common errors.
+Of course, there are many ways by which a functions arguments can be wrong, to rephrase Tolstoy _"All happy functions are alike; each unhappy function is unhappy in its own way"_. We demonstrated a logical error. Another common error is passing data of the wrong type to a function, such as a string when a number is called for. These errors can be caught using the *is.type* functions, where *type* is replaced by the type of interest (e.g.`is.numeric`). While We cannot prevent all errors, when writing a function it is worth taking a moment to think about how to prevent some common errors.
 
 ### C. Estimating Richness via Resampling  
 
@@ -381,7 +381,7 @@ How does sample size affect observed and estimated richness?
 
 ### E. Collector's Curve
 A collectors' curve is similar in ways to the rarefaction exercise we introduced in **4. Alpha Diversity**. 
-Also known as the species accumulation curve, the collector's curve plots the cummulative number of species (i.e., richness) as a function of sampling effort (i.e., number of individuals sampled, *N*).
+Also known as the species accumulation curve, the collector's curve plots the cumulative number of species (i.e., richness) as a function of sampling effort (i.e., number of individuals sampled, *N*).
 The shape of the resulting curve can be informative. 
 Qualitatively and practically, one can assess the amount of time and effort it will take to characterize the diversity of a sample. 
 Quantitatively, data from the collector's curve can be fit with mathematical functions, and this information can be used to infer other biodiversity patterns, such as the species area relationship (SAR), which is discussed in **5. Spatial Diversity**.
@@ -411,4 +411,4 @@ for (i in 1:N){
 plot(1:N, S.collectors, xlab = "Sample size",ylab = "S.obs")
 ```
 
-Given that resources (time and money) are often limiting, what sampe size would you use for estimating richness of the source community?  
+Given that resources (time and money) are often limiting, what sample size would you use for estimating richness of the source community?  
