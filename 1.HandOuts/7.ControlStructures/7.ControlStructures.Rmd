@@ -236,6 +236,49 @@ plot(RACsample, las = 1, cex.lab = 1.4, cex.axis = 1.25, xlim=c(1,20), main = "S
 
 How similar or different is the sample from the source community?  
 
+**Testing input to a function using the `if` statement**  
+Functions work very well if they are fed the right kind of input. But pass some inapropriate argument and things will go wrong, and posssibly horribly wrong. To demostrate this idea try and sample the `jelly.jar` with a sample size larger than the size of the community.  
+```{r, eval=FALSE}
+sample.community(x=jelly.jar,n=(sum(jelly.jar)+1))
+```
+
+R produces an error message:  
+
+> Error in sample.int(length(x), size, replace, prob) : 
+>  cannot take a sample larger than the population when 'replace = FALSE'
+
+The first line of this message indicates the function that produced it. In this case it is the `sample.int()` function. This function is nested withhin the `sample()` function (you can see the code for `sample` by typing *sample* without brackets in the console). The second line of the error message tells us that you cannot take more sample the the population size unless you set the `replace` argument to TRUE. This message is very helpful.
+
+To prevent such errors, that could lead to unexpected behavior of your code, it is a good idea to test the input of functions before processing it in the function. Let's rewrite our sampling function to include a test for sample size using the `if` statement. We will also use the `stop` finction to produce our own error message.
+
+```{r, results='hide'}
+sample.community <- function (x,n){
+  # sample size cannot exceed community size
+  if (n > sum(x)) stop ("Sample size cannot exceed total size of community")
+  # write out an explicit vector of the community  
+  all.individuals <- rep(seq(x), x)
+  # take n samples from the community
+  survey <- sample(all.individuals,n)
+  # prepare vector of species with 0 in each bin
+  survey.sum <- rep(0, length(x))
+  # add 1 to species bin each time an individual of that species was sampled 
+    for ( i in survey){
+     survey.sum[i] <- survey.sum[i] + 1
+    }
+  return(survey.sum)
+}
+```
+
+Now if we pass to our function `n` that exceeds the community size we will get an error from our function.  
+```{r, eval=FALSE}
+sample.community(x=jelly.jar,n=(sum(jelly.jar)+1))
+```
+
+> Error in sample.community(x = jelly.jar, n = (sum(jelly.jar) + 1)) : 
+>  'Sample size cannot exceed total size of community  
+
+Of course, there are many ways by which a functions arfuments mcan be wrong, to rephrase Tolstoy _"All happy functions are alike; each unhappy function is unhappy in its own way"_. We demonstrated a logical error. Another common error is passing data of the wrong type to a function, such as a string when a number is called for. These errors can be caught using the *is.type* functions, where *type* is relaced by the type of interest (e.g.`is.numeric`). While We cannot prevent all errors, when writing a function it is worth taking a moment to think about how to prevent some common errors.
+
 ### C. Estimating Richness in Repeated Samples  
 
 We will next use for loops to explore how well richness indices succeed in estimating the true richness of the source community. We will use The function `estimateR` from the `vegan` package to calculate diversity indices.  
