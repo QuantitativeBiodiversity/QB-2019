@@ -9,7 +9,7 @@ geometry: margin=2.54cm
 
 ## OVERVIEW
 
-In Dante's satire of hell each layer contains a new iterative task for the tortured to endure for eternity. Much of the power of computing stems from the efficiency of computers in performing small tasks in an iterative manner. This lesson introducts the concepts of control structures and random numbers. We will use these tools to understand the diversity of jellybeans flavors, but these basic tools are useful for a numbers of tasks in computing and will help you automate many of your future work flows.
+In Dante's satire of hell each layer contains a new iterative task for the tortured to endure for eternity. Much of the power of computing stems from the efficiency of computers in performing small tasks in an iterative manner. This lesson introduces the concepts of control structures and random numbers. We will use these tools to understand the diversity of jellybeans flavors, but these basic tools are useful for a numbers of tasks in computing and will help you automate many of your future work flows.
 
 ## 1) INTRODUCTION TO CONTROL STRUCTURES
 Control structures allow you to control the flow of execution of a script. Today, we will focus on the "for loop", but other common control structures include: 
@@ -135,26 +135,56 @@ Notice that a while loop needs an specific break point.
 
 What would happen if the code block was changed to subtract 1 from i in each iteration of the loop?
 
-## 2) REVISITNG JELLY BEAN WITH CONTROL STRUCTURE
+## 2) Revisiting the jelly-bean community with control structure  
+The control structures discussed above have unlimited applications in the relm of quatitative methods. In this section you will learn how to apply these structures in conducting the analyses scheme you carried out for the jelly bean community. But befor we can do that we need to get familiar with another powerful family of functions in R: built-in probability ditributions.
 
-### A. Generate a Source Community by Drawing from Lognormal Distribution
-* We want to generate source comunity
-* R has built-in functions for statistical distributions (see`Distributions')
-* for each distribution there are 4 functions: density, probability, qunatile and random sample.
-* Biological communities often described by log-normal so we will use that distribution.
-* random are not really random, rather pseudo-random. We can get the same "random" sample by setting the seed
+### A. Statistical distributions in R
 
-```{r}
-set.seed(6)
-digital.jelly <- round(rlnorm(n = 20, meanlog = 5 ))
-digital.jelly <- sort(digital.jelly,decreasing = T)
-names(digital.jelly) <- paste0("species.",LETTERS[seq(digital.jelly)])
-plot(digital.jelly, log='y')
+Many groups of quantities can be described as frequency distributions. You are probably familiar with the Normal ditribution and its hallmark bell curve. R has built-in functions describing many statistical distributions. You can find them listed in the R Documentation by typing `?Distributions` in the console.
+
+Choose your favourite distribution and look at its specific documentation. Each disribution in R has 4 functions asociated with it: **d**ensity, **p**robability, **q**uantiles and **r**andom sample. For example the uniform distribution (an equal probaility for all values) is calle *unif* in R and has the following 4 functions.   
+
+```{r, eval=FALSE}
+dunif(x, min = 0, max = 1, log = FALSE)                       # Density  
+punif(q, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)  # probaility  
+qunif(p, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)  # qunatile  
+runif(n, min = 0, max = 1)                                    # random sample  
 ```
 
-Explain the details of commands above
+**A quick note on random sampling by computers**
+Computers can't generate truly random number, but rather psedorandom numbers. This is acieved by a function that generates sequences of numbers that behave like random numbers, but are completly determined by the functions input known as a *seed*. Put in the same seed twice and you will get the same sequence of numbers. 
 
-### B. Sample the Source Community
+
+### B. generating the source community  
+In the jelly bean excercise you had a jar of jelly beans simulationg a biological community. To generate our digital community we will recall that the species abundances in biological communities often follows the log-normal distribution. To simullate a community we will draw a seuence of random numbers from the log-normal dittribution. Each of thes numbers will represent the abundance of a simgle species in our simulated community. 
+
+```{r}
+# for reproducible results we can set the seed
+set.seed(6)
+# draw 20 random numbers from l0g-normal distribution with a mean of 5 (log scale)
+jelly.jar <- rlnorm (n = 20, meanlog = 5 )
+# force numers to integers
+jelly.jar <- as.integer (jelly.jar)
+```
+
+Let's plot the rank-abundance curve of our community using the `rad` function from the `vegan` package
+
+```{r, results='hide', message=FALSE, warning=FALSE}
+require (vegan)
+RACresults <- rad.lognormal(jelly.jar)
+plot(RACresults, las = 1, cex.lab = 1.4, cex.axis = 1.25)
+```
+
+### B. Sampling the Source Community
+
+Next we will write a function that will draw a random sample from our `jelly.jar` community. Take a moment to break down the process sampling the jelly bean jar  into a sequence of actions.  
+One such sequence may be: 
+1. draw random jelly bean
+2. classify jelly bean color
+3. add 1 to list of colors by color sampled
+4. repeat steps 1-3 *N* times, where *N* is your sample size
+
+This sequence of actions is an algorithm. Here is how it looks like in R code:
 
 Function to generate a single sample
 * explain the rational: sample and the summarize sample
@@ -162,14 +192,35 @@ Function to generate a single sample
 * mention the sample is iterative as well, but built in function ("sample") negates the use of loop.
 ```{r}
 sample.community <- function (x,n){
-  survey <- sample(seq(x),size = n, replace = T,prob = x)
+  # write out an explicit vector of the community  
+  all.individuals <- rep(seq(x), x)
+  # take n samples from the community
+  survey <- sample(all.individuals,n)
+  # prepare vector of species with 0 in each bin
   survey.sum <- rep(0, length(x))
-  for (i in survey){
-    survey.sum[i]<-survey.sum[i]+1
-  }
+  # add 1 to species bin each time an individual of that species was sampled 
+    for ( i in survey){
+     survey.sum[i] <- survey.sum[i] + 1
+    }
   return(survey.sum)
 }
 ```
+
+Note that in this implementation of the algorithm above we drew multiple samples using the `sample` function. This function iterated over the salping step `n` times. Next we wrote a for loop to iterate over those samples and bin them into our species list.
+
+Let's compare the rank abundance curves of a sample to our source community
+```{r}
+# sample using our fuction
+sample.jelly <- sample.community(x=jelly.jar,n=100)
+# generate RAC using vegan
+RACsample <- rad.lognormal(sample.jelly)
+plot.new()
+par(mfrow=c(1,2))
+plot(RACresults, las = 1, cex.lab = 1.4, cex.axis = 1.25, xlim=c(1,20), main="Source community")
+plot(RACsample, las = 1, cex.lab = 1.4, cex.axis = 1.25, xlim=c(1,20), main = "Sample")
+```
+
+How simmilar or different is the sample from the source community?
 
 ### C. Calculate Alpha Diversity
 
@@ -188,9 +239,9 @@ S.chao1 <- function(x = ""){
 
 Repeat sampling and calculations 100 times using for loop. 
 Look at estimated prameter distribution along with real value.
-* for loop used to investigate repeatedd random samling and behavior of index.
+* for loop used to investigate repeated random samling and behavior of index.
 ```{r}
-S.true <- length(digital.jelly)
+S.true <- length(jelly.jar)
 plot(0, t = "n", xlim = c(S.true/2, 1.5 * S.true), ylim = c(S.true/2, 1.5 * S.true), 
      xlab = "S.obs", ylab = "S.chao1")
 abline(h = S.true, v = S.true, col = "red")
@@ -198,7 +249,7 @@ abline(h = S.true, v = S.true, col = "red")
 N <- 200
 
 for ( i in 1:100){
-  sample.dj <- sample.community(digital.jelly,N)
+  sample.dj <- sample.community(jelly.jar,N)
   x<-S.obs(t(sample.dj))
   y<-S.chao1(t(sample.dj))
   points(x,y)
@@ -215,7 +266,7 @@ S.observed as a function of N. First take a single sample of size N from the sou
 
 #first take a single sample of size N from the source population
 N<-1000
-sample.dj <- sample.community(digital.jelly,n = N)
+sample.dj <- sample.community(jelly.jar,n = N)
 
 #generate vector to store results
 S.collectors <- rep(NA, N)
@@ -229,7 +280,7 @@ plot(1:N, S.collectors, xlab = "Sample size",ylab = "S.obs")
 ```
 What is the samllest sampe size to indicate the true richness? 
 What is the largest sample size to underestimate richness?
-What sample size wiuld you recommend for the next survey of ths community?
+What sample size would you recommend for the next survey of ths community?
 
 ### Shannon diversity
 * show how to translate mathematical notation of summation into loop, i.e. how to transfer the logic between math and code
