@@ -389,25 +389,22 @@ Quantitatively, data from the collector's curve can be fit with mathematical fun
 In the code chunks below, we will first take a single sample of size *N* from the source community.
 We will then use for-loops to sample the source community with increasing effort (i.e., *N* + 1) while recording sample richness:
  
-```{r, eval=FALSE}
+```{r}
 #take a single sample of size N from the source community
 N<-1000
-sample.dj <- sample.community(jelly.jar,n = N)
+sample.jelly <- sample.community(jelly.jar,n = N)
 
 #generate vector to store results
 S.collectors <- rep(NA, N)
 
-#observed richness
-S.obs <- function(x = ""){
-rowSums(x > 0) * 1
-}
-
-#loop through 1:N and check S.obs
+#loop through 1:N and check S.obs for sub-samples
 for (i in 1:N){
-  current <-  sample.community(sample.dj,n = i)
-  S.collectors[i] <- S.obs(t(current))
+  sub.sample <-  sample.community(sample.jelly,n = i)
+  S.collectors[i] <-estimateR(sub.sample)["S.obs"]
 }
-
+# Plot results
+plot.new()
+par(mfrow=c(1,1))
 plot(1:N, S.collectors, xlab = "Sample size",ylab = "S.obs")
 ```
 
