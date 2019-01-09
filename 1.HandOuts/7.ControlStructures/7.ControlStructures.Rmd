@@ -17,7 +17,8 @@ Control structures allow you to control the flow of execution of a script. Today
 "while"
 and "next"
 Have a look at `?Control` for documentation.  
-A quick tutorial of common control structures in R can be found at https://ramnathv.github.io/pycon2014-r/learn/controls.html
+
+An another quick tutorial of common control structures in R can be found at https://ramnathv.github.io/pycon2014-r/learn/controls.html
 
 
 
@@ -28,13 +29,14 @@ rm(list = ls()) # clear working directory
 ### A. 'If' and 'Else' Logical Tests
 
 Short intro: when and why to use
-<align properly>
+
 1. The general syntax for an "if, else" control stucture in the R language. 
    if (condition) {  
    	# do something  
    } else {  
    	# do something else  
    }  
+   
 2. An example of the an "if, else" control stucture.  
 
 ```{r, results='hide'}
@@ -45,24 +47,27 @@ if (sample(x, 1) <= 10) {
    print(paste("x is",x,"and is greater than 10"))
 }
 ```
-<align properly>
-3. "if" accepts logical values; can accept numbers but not strings.
-4. "if" can be complemented by an "else"
-5. ifelse as shorthand
-6. if-else can be strung to create hirearchy of tests
+
+3. "if" accepts logical values; can accept numbers but not strings.  
+
+4. "if" can be complemented by an "else"  
+
+5. ifelse as shorthand  
+
+6. if-else can be strung to create hirearchy of tests  
 
 ### B. For Loops
 
 Let's introduce the "for loop" as a control structure.
 
 **Syntax**
-The specific syntax of for loops will look different in other language but basics syntax remains the same.
-1. Start a loop with for
-2. Declare variable and number of iteration
-3. Tasks to perform in code block
+The specific syntax of for loops will look different in other language but basics syntax remains the same.  
+1. Start a loop with for  
+2. Declare variable and number of iteration  
+3. Tasks to perform in code block  
 
-                       1.     2.         3.
-In R this looks like: for(i in 1:10){ print(i) }
+                     1.     2.         3.  
+In R this looks like: for(i in 1:10){ print(i) }  
 
 ```{r, results='hide'}
 for(i in 1:10){
@@ -70,12 +75,12 @@ for(i in 1:10){
 }
 ```
 
-In this sturcture i is a variable that will hold each interger from 1 to 10 during each successive pass through the loop.
+In this sturcture i is a variable that will hold each interger from 1 to 10 during each successive pass through the loop.  
 
-You can use this structure to move through each item of vector and perfrom any number of tasks to each element.
+You can use this structure to move through each item of vector and perfrom any number of tasks to each element.  
 
 Like printing out a list of fruits.
-```{r}
+```{r, results='hide'}
 x <- c("apples", "oranges", "bananas", "strawberries")
 
 for (i in seq(x)) {
@@ -83,35 +88,45 @@ for (i in seq(x)) {
 }
 ```
 
-Note that a for loop can iterate over any type of vector: logical, numerical, string. You can also iterate over vectors using indices (R counts from 1 and not form 0 like some other languages)
-```{r}
+Note that a for loop can iterate over any type of vector: logical, numerical, string. You can also iterate over vectors using indices (R counts from 1 and not form 0 like some other languages) or assign i as a local variable that holds the value of each item in a vector.  
+```{r, results='hide'}
 for (i in x) {
     print(i)
 }
 ```
 
 
-Or get the number of characters in each item of the same list.
+You can use loops to transform vectors. The two scripts below give use the length of the strings in our vector. However, the first one prints to the screen a local scalar variable, `len`, and the second uses the loop to fill a global scalar vector, `len`, that now holds the length of each strings.  
 
-```{r}
+```{r, results='hide'}
 for (i in seq(x)) {
   len <- nchar(x[i])
   print(len)
 }
+
+len <- ""
+for (i in seq(x)) {
+  len[i] <- nchar(x[i])
+}
+print(len)
 ```
-**Note on the use of for loops**
-When possible try to avoid them. They take a long time to execute and are somewhat clumsy. Consider using apply type functions.
+
+**Note on the use of for loops**  
+When possible try to avoid them. They take a long time to execute and are somewhat clumsy. Consider using apply type functions.  
 
 The sapply function can be used to get the same results as the loop above. Check out `?apply` and `?lapply`.  
 
-```{r}
-sapply(x, nchar)
+```{r, results='hide'}
+len <- sapply(x, nchar)
+#the output of sapply is a "named int", but this can by easily coerced to a vector.
+len <- as.vector(len)
+print(len)
 ```
 
-### C. Combining for and if
-e.g. print only numbers that can be divided by 3
+### C. Combining for and if  
+e.g. print only numbers that can be divided by 3  
 
-```{r}
+```{r, results='hide'}
 for(i in 1:10){
   if(i %% 3 == 0){
     print(i)
@@ -119,46 +134,47 @@ for(i in 1:10){
 }
 ```
 
-### D. While loops
-Another loop control structure is the "while loop".
+### D. While loops  
+Another loop control structure is the "while loop".  
 
-An example of the while loop.
+An example of the while loop.  
 
-```{r}
+```{r, results='hide'}
 i <- 1
 while (i < 10) {
     print(i)
     i <- i + 1
 }
 ```
-Notice that a while loop needs an specific break point.
 
-What would happen if the code block was changed to subtract 1 from i in each iteration of the loop?
+Notice that a while loop needs an specific break point.  
+
+What would happen if the code block was changed to subtract 1 from i in each iteration of the loop?  
 
 ## 2) Revisiting the jelly-bean community with control structure  
-The control structures discussed above have unlimited applications in the relm of quatitative methods. In this section you will learn how to apply these structures in conducting the analyses scheme you carried out for the jelly bean community. But befor we can do that we need to get familiar with another powerful family of functions in R: built-in probability ditributions.
+The control structures discussed above have unlimited applications in the relm of quatitative methods. In this section you will learn how to apply these structures in conducting the analyses scheme you carried out for the jelly bean community. But before we can do that we need to get familiar with another powerful family of functions in R: built-in probability ditributions.  
 
-### A. Statistical distributions in R
+### A. Statistical distributions in R  
 
-Many groups of quantities can be described as frequency distributions. You are probably familiar with the Normal ditribution and its hallmark bell curve. R has built-in functions describing many statistical distributions. You can find them listed in the R Documentation by typing `?Distributions` in the console.
+Many groups of quantities can be described as frequency distributions. You are probably familiar with the Normal ditribution and its hallmark bell curve. R has built-in functions describing many statistical distributions. You can find them listed in the R Documentation by typing `?Distributions` in the console.  
 
-Choose your favourite distribution and look at its specific documentation. Each disribution in R has 4 functions asociated with it: **d**ensity, **p**robability, **q**uantiles and **r**andom sample. For example the uniform distribution (an equal probaility for all values) is calle *unif* in R and has the following 4 functions.   
+Choose your favorite distribution and look at its specific documentation. Each disribution in R has 4 functions asociated with it: **d**ensity, **p**robability, **q**uantiles and **r**andom sample. For example the uniform distribution (an equal probaility for all values) is called *unif* in R and has the following 4 functions.     
 
 ```{r, eval=FALSE}
 dunif(x, min = 0, max = 1, log = FALSE)                       # Density  
-punif(q, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)  # probaility  
-qunif(p, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)  # qunatile  
-runif(n, min = 0, max = 1)                                    # random sample  
+punif(q, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)  # Probaility  
+qunif(p, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)  # Qunatile  
+runif(n, min = 0, max = 1)                                    # Random Sample  
 ```
 
-**A quick note on random sampling by computers**
-Computers can't generate truly random number, but rather psedorandom numbers. This is acieved by a function that generates sequences of numbers that behave like random numbers, but are completly determined by the functions input known as a *seed*. Put in the same seed twice and you will get the same sequence of numbers. 
+**A quick note on random sampling by computers**  
+Computers can't generate truly random number, but rather pseudorandom numbers. This is achieved by a function that generates sequences of numbers that behave like random numbers, but are completely determined by the functions input known as a *seed*. Put in the same seed twice and you will get the same sequence of numbers.   
 
 
-### B. generating the source community  
-In the jelly bean excercise you had a jar of jelly beans simulationg a biological community. To generate our digital community we will recall that the species abundances in biological communities often follows the log-normal distribution. To simullate a community we will draw a seuence of random numbers from the log-normal dittribution. Each of thes numbers will represent the abundance of a simgle species in our simulated community. 
+### B. generating the source community    
+In the jelly bean excercise you had a jar of jelly beans simulating a biological community. To generate our digital community we will recall that the species abundances in biological communities often follows the log-normal distribution. To simulate a community we will draw a sequence of random numbers from the log-normal distribution. Each of these numbers will represent the abundance of a single species in our simulated community.  
 
-```{r}
+```{r , results='hide'}
 # for reproducible results we will set the seed
 set.seed(6)
 # draw 20 random numbers from l0g-normal distribution with a mean of 5 (log scale)
@@ -167,7 +183,7 @@ jelly.jar <- rlnorm (n = 20, meanlog = 5 )
 jelly.jar <- as.integer (jelly.jar)
 ```
 
-Let's plot the rank-abundance curve of our community using the `rad` function from the `vegan` package
+Let's plot the rank-abundance curve of our community using the `rad` function from the `vegan` package  
 
 ```{r, results='hide', message=FALSE, warning=FALSE}
 require (vegan)
@@ -175,22 +191,18 @@ RACresults <- rad.lognormal(jelly.jar)
 plot(RACresults, las = 1, cex.lab = 1.4, cex.axis = 1.25)
 ```
 
-### B. Sampling the Source Community
+### B. Sampling the Source Community  
 
 Next we will write a function that will draw a random sample from our `jelly.jar` community. Take a moment to break down the process sampling the jelly bean jar  into a sequence of actions.  
-One such sequence may be: 
-1. draw random jelly bean
-2. classify jelly bean color
-3. add 1 to list of colors by color sampled
-4. repeat steps 1-3 *N* times, where *N* is your sample size
+One such sequence may be:  
+1. draw random jelly bean  
+2. classify jelly bean color  
+3. add 1 to list of colors by color sampled  
+4. repeat steps 1-3 *N* times, where *N* is your sample size  
 
-This sequence of actions is an algorithm. Here is how it looks like in R code:
+This sequence of actions is an algorithm. Here is how looks in R code:  
 
-Function to generate a single sample
-* explain the rational: sample and the summarize sample
-* highlight the use of for loop in binning
-* mention the sample is iterative as well, but built in function ("sample") negates the use of loop.
-```{r}
+```{r, results='hide'}
 sample.community <- function (x,n){
   # write out an explicit vector of the community  
   all.individuals <- rep(seq(x), x)
@@ -206,9 +218,9 @@ sample.community <- function (x,n){
 }
 ```
 
-Note that in this implementation of the algorithm above we drew multiple samples using the `sample` function. This function iterated over the salping step `n` times. Next we wrote a for loop to iterate over those samples and bin them into our species list.
+Note that in this implementation of the algorithm above we drew multiple samples using the `sample` function. This function iterated over the samlping step `n` times. Next we wrote a for loop to iterate over those samples and bin them into our species list.  
 
-Let's compare the rank abundance curves of a sample to our source community
+Let's compare the rank abundance curves of a sample to our source community.  
 ```{r}
 # for reproducible results we will set the seed
 set.seed(3)
@@ -222,11 +234,11 @@ plot(RACresults, las = 1, cex.lab = 1.4, cex.axis = 1.25, xlim=c(1,20), main="So
 plot(RACsample, las = 1, cex.lab = 1.4, cex.axis = 1.25, xlim=c(1,20), main = "Sample")
 ```
 
-How simmilar or different is the sample from the source community?
+How similar or different is the sample from the source community?  
 
-### C. Estimating Richness in Reapeated Samples
+### C. Estimating Richness in Repeated Samples  
 
-We will next use for loops to explore how well richness indices succeed in estimating the rrue richness of the source community. We will use The function `estimateR` of the `vegan` package to calculate diversity indices.
+We will next use for loops to explore how well richness indices succeed in estimating the true richness of the source community. We will use The function `estimateR` from the `vegan` package to calculate diversity indices.  
 
 ```{r}
 
@@ -234,7 +246,8 @@ S <- estimateR(sample.jelly)
 S
 ```
 
-How well these 3 indinces estimete the true diversity? Using our simulated community we can test that! We will draw repeated samples from our source community and estimate *S* for each of them. Lastly we will look at the distribution of the results compared to the true *S*.
+
+How well do these 3 indices estimate the true diversity? Using our simulated community we can test that! We will draw repeated samples from our source community and estimate *S* for each of them. Lastly we will look at the distribution of the results compared to the true *S*.  
 
 ```{r}
 # Number of individuales per sample
@@ -262,11 +275,11 @@ for (i in c("S.obs", "S.chao1", "S.ACE")){
 ```
 
 
-Play around with the sample size (by changing the value of `n`). How does sample size affect observed and estimated richness?
+Play around with the sample size (by changing the value of `n`). How does sample size affect observed and estimated richness?  
 
 ### E. Collector's Curve
 
-S.observed as a function of N. First take a single sample of size N from the source population. Subsample you sample with sampe sizes increasing from 1 to N and note the observed richness for each subsample.
+S.observed as a function of N. First take a single sample of size N from the source population. Subsample you sample with sample sizes increasing from 1 to N and note the observed richness for each subsample.  
 
 ```{r, eval=FALSE}
 
@@ -284,18 +297,7 @@ for (i in 1:N){
 
 plot(1:N, S.collectors, xlab = "Sample size",ylab = "S.obs")
 ```
-What is the samllest sampe size to indicate the true richness? 
-What is the largest sample size to underestimate richness?
-What sample size would you recommend for the next survey of ths community?
 
-### Shannon diversity
-* show how to translate mathematical notation of summation into loop, i.e. how to transfer the logic between math and code
-
-
-** consider whether to add this next section**
-### Beta diversity
-* nested for loops
-*how to avoid them
-
-
-
+What is the samllest sampe size to indicate the true richness?   
+What is the largest sample size to underestimate richness?  
+What sample size would you recommend for the next survey of ths community?  
