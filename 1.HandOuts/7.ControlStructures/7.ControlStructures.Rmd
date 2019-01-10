@@ -107,7 +107,7 @@ for (i in x) {
 
 You can use for-loops to transform vectors. 
 The two scripts below give use the length of the strings in our vector. 
-However, the first one prints to the screen a local scalar variable, `len`, and the second uses the loop to fill a global scalar vector, `len`, that now holds the length of each string.  
+However, the first one prints to the screen a scalar variable, `len`, and the second uses the loop to fill a scalar vector, `len`, that now holds the length of each string.  
 
 ```{r, results='hide'}
 for (i in seq(x)) {
