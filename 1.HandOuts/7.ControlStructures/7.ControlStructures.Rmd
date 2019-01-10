@@ -409,3 +409,22 @@ plot(1:N, S.collectors, xlab = "Sample size",ylab = "S.obs")
 ```
 
 Given that resources (time and money) are often limiting, what sample size would you use for estimating richness of the source community?  
+
+### E. Shannon's Diversity: A Mathematical `for` Loop
+
+In **4. Alpha Diversity** we introduced Shannon's diversity index:
+
+$$H' = -\sum_{i=1}^n p_i\;  ln (p_i)$$  
+where $p_i$ is the proportion of individuals found in the *i*^th^ species. Note that $\sum_{i=1}^n$ is a mathematical `for` loop requiring an iteration over `i in 1:n` and executing $p_i\;  ln (p_i)$ in every iteration. Thus, this equation is equivalent to the following function:  
+```{r}
+ShanH <- function(x){
+  H = 0
+  for (i in seq(x)){
+      p_i = x[i] / sum(x)
+      H = H + p_i*log(p_i) 
+  }
+  return(-H)
+}
+```
+
+Using this function we can calculate that H'~`jelly.jar`~=`r ShanH(jelly.jar)`.  
