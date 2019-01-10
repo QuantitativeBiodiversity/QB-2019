@@ -13,20 +13,20 @@ In Dante's satire of hell, each layer contains a new iterative task for the tort
 Without a mastery of basic computational skills, wrestling with large data sets can make it seem like you are trapped in an underworld. 
 Much of the power of computing stems from the efficiency of computers in performing small tasks in an iterative manner. 
 This lesson introduces the concepts of control structures. 
-We will use these tools to understand the diversity of jellybeans flavors, but control structures will be useful for automating many of your future work flows in a reproducible manner.
+We will use these tools to simulate and understand the diversity of jellybeans flavors, but control structures will be useful for automating many of your future work flows in a reproducible manner.
 
 ## 1) INTRODUCTION TO CONTROL STRUCTURES
 Control structures allow you to control the flow of execution in a script. 
 These blocks of code serve as algorithms that act on variables in user-defined way.
 Often, control structures are embedded in functions to carry out sequential, selective, and repetitive tasks. 
 Some of the most commonly used control structures include "if, else" statements, "while" loops, and "next" statements. 
-Today, we will focus mostly on the "for loop".
+Today, we will focus mostly on the "for loop" and "if, else" statements.
 
 There is a lot of information on control structures elsewhere. 
 A succinct tutorial of common control structures in R can be found at https://ramnathv.github.io/pycon2014-r/learn/controls.html
 You can also take a look at `?Control` for documentation. 
 
-```{r, results = 'hide'}
+```{r, echo=FALSE, results = 'hide'}
 rm(list = ls()) # clear working directory
 ```
 
@@ -46,21 +46,34 @@ The following text will walk you through how to use and implement 'if, else' con
 2. An example of the an "if, else" control structure.  
 
 ```{r, results='hide'}
-x <- 1:15
-if (sample(x, 1) <= 10) {
-   print(paste("x is",x ,"and is less than 10"))
+x <- sample(1:15, size=1)
+
+if (x <= 10) {
+  paste("x is", x, "and is less than, or equal to, 10")
 } else {
-   print(paste("x is",x,"and is greater than 10"))
+  paste("x is", x, "and is greater than 10")
 }
 ```
 
-3. "if" accepts logical values (e.g., <, >=, !=); can accept numbers but not strings.  
+3. "if" accepts logical values (TRUE or FALSE) often resulting from logical operators  (e.g., <, >=, !=. see `?Logic`); can accept numbers (0 is FALSE, any other number is TRUE) but not strings.  
 
 4. "if" can be complemented by an "else"  
 
 5. `ifelse()` is a function that can be used in R (e.g., ifelse(test_expression, x, y))
 
-6. if-else can be strung to create hierarchy of tests  
+6. if-else can be strung to create hierarchy of tests:  
+```{r, results='hide'}
+x <- sample(1:15, size=1)
+
+if (x==10){
+  paste("x is", x, "and is equal to 10")
+} else if (x < 10) {
+  paste("x is", x, "is less than 10")
+} else {
+  paste("x is", x, "is greater than 10")
+}
+```
+
 
 ### B. For-Loops
 These control structures execute an iterative task. 
@@ -68,15 +81,17 @@ For-loops are made up of two basic parts.
 The first part, sometimes referred to as the header, specifies the iteration and has a loop counter. 
 The second part of the for-loop is the body, which contains an operation that is executed upon each iteration. 
 
-**Syntax**
-The specific syntax of for-loops will look different in other languages but basic syntax and structure remains the same.  
+**Syntax**  
+The specific syntax of for-loops will look different in other languages but the basic syntax and structure remains the same.  
 
-1. Start a loop with for  
+1. Start a loop with `for`  
+
 2. Declare variable and number of iterations  
-3. Tasks to perform in code block (or "body")  
 
-                     1.     2.         3.  
-In R this looks like: for(i in 1:10){ print(i) }  
+3. Tasks to perform in code block (or "body") 
+
+                          1    2          3  
+In R this looks like: for (i in 1:10) { print(i) }  
 
 ```{r, results='hide'}
 for(i in 1:10){
@@ -92,22 +107,22 @@ For example, let's print out a list of fruits.
 ```{r, results='hide'}
 x <- c("apples", "oranges", "bananas", "strawberries") # x is a vector of fruit names
 
+for (i in x) {
+    print(i)
+}
+
+```
+
+Note that a for-loop can iterate over any type of vector: logical, numerical, string. In this example assign the iteration counter variable to hold the value of each item in out vector. You can also iterate over vectors using indices (R counts from 1 and not from 0 like some other languages).     
+```{r, results='hide'}
 for (i in seq(x)) {
     print(x[i])
 }
 ```
 
-Note that a for-loop can iterate over any type of vector: logical, numerical, string. 
-You can also iterate over vectors using indices (R counts from 1 and not from 0 like some other languages) or assign i as a local variable that holds the value of each item in a vector.  
-```{r, results='hide'}
-for (i in x) {
-    print(i)
-}
-```
-
 You can use for-loops to transform vectors. 
-The two scripts below give use the length of the strings in our vector. 
-However, the first one prints to the screen a local scalar variable, `len`, and the second uses the loop to fill a global scalar vector, `len`, that now holds the length of each string.  
+The two scripts below give us the length of the strings in our vector. 
+The first one prints to the screen the variable `len` that changes with each iteration. The second uses the loop to fill a vector, `len`, that now holds the length of each string in the corresponding vector index of `x`.  
 
 ```{r, results='hide'}
 for (i in seq(x)) {
@@ -129,7 +144,7 @@ In R, there are some other ways to achieve the same power.
 For example, the function `tapply()` executes a function to specific elements of a data frame, `apply()` executes a function (e.g., mean) to the rows or columns of a data frame, and `sapply()` performs a function on list or array.  
 
 These functions are easier to implement and are also more computationally efficient. 
-Check out `?tapply`, ?apply`, `?sapply`.
+Check out `?tapply`, `?apply`, `?sapply`.
 
 ```{r, results='hide'}
 len <- sapply(x, nchar)
@@ -153,7 +168,7 @@ for(i in 1:10){
 
 ### D. While loops  
 Another loop control structure is the "while loop".
-While loops are sort of like repeating "if" statement; that is, it continues to operate until a conditional statement changes (e.g., "true" becomes "false"). 
+While loops are sort of like repeating "if" statement; that is, it continues to operate until a conditional statement changes (i.e TRUE becomes FALSE). 
 
 Here is an example of a while loop.  
 
@@ -165,7 +180,7 @@ while (i < 10) {
 }
 ```
 
-Notice that a while loop needs an specific break point.  
+Notice that a while loop needs an specific break point (see `?break`.  
 
 What would happen if the code block was changed to subtract 1 from i in each iteration of the loop?  
 If you dare, try this out!
@@ -188,7 +203,7 @@ For example the uniform distribution (an equal probability for all values) is ca
 ```{r, eval=FALSE}
 dunif(x, min = 0, max = 1, log = FALSE)                       # Density  
 punif(q, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)  # Probaility  
-qunif(p, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)  # Qunatile  
+qunif(p, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)  # Qunatiles  
 runif(n, min = 0, max = 1)                                    # Random Sample  
 ```
 
