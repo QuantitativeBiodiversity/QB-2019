@@ -19,8 +19,8 @@ You will not be able to complete the exercises without the corresponding handout
 4. Answer questions in the  worksheet.
 Space for your answers is provided in this document and is indicated by the ">" character.
 If you need a second paragraph be sure to start the first line with ">".
-You should notice that the answer is highlighted in green by RStudio. 
-5. Before you leave the classroom today, it is *imperative* that you **push** this file to your GitHub repo.
+You should notice that the answer is highlighted in green by RStudio (color may vary if you changed the editor theme). 
+5. Before you leave the classroom today, it is *imperative* that you **push** this file to your GitHub repo, at whatever stage you are. Ths will enable you to pull your work onto your own computer.
 6. When you have completed the worksheet, **Knit** the text and code into a single PDF file by pressing the `Knit` button in the RStudio scripting panel.
 This will save the PDF output in your '3.RStudio' folder.
 8. After Knitting, please submit the worksheet by making a **push** to your GitHub repo and then create a **pull request** via GitHub.
@@ -38,7 +38,7 @@ Anything in an R code chunk will be interpreted by R when you *Knit* the documen
 When you are done, you will *knit* your document together.
 However, if there are errors in the R code contained in your Markdown document, you will not be able to knit a PDF file. 
 If this happens, you will need to review your code, locate the source of the error(s), and make the appropriate changes.
-Even if you are able to knit without issue, you should review the knitted document for correctness and completeness before you submit the Worksheet.
+Even if you are able to knit without issue, you should review the knitted document for correctness and completeness before you submit the Worksheet. Next to the `Knit` button in the RStudio scripting panel there is a spell checker button (`ABC`) button.
 
 ## 2) SETTING YOUR WORKING DIRECTORY
 
