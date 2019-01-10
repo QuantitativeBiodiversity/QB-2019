@@ -13,20 +13,20 @@ In Dante's satire of hell, each layer contains a new iterative task for the tort
 Without a mastery of basic computational skills, wrestling with large data sets can make it seem like you are trapped in an underworld. 
 Much of the power of computing stems from the efficiency of computers in performing small tasks in an iterative manner. 
 This lesson introduces the concepts of control structures. 
-We will use these tools to understand the diversity of jellybeans flavors, but control structures will be useful for automating many of your future work flows in a reproducible manner.
+We will use these tools to simulate and understand the diversity of jellybeans flavors, but control structures will be useful for automating many of your future work flows in a reproducible manner.
 
 ## 1) INTRODUCTION TO CONTROL STRUCTURES
 Control structures allow you to control the flow of execution in a script. 
 These blocks of code serve as algorithms that act on variables in user-defined way.
 Often, control structures are embedded in functions to carry out sequential, selective, and repetitive tasks. 
 Some of the most commonly used control structures include "if, else" statements, "while" loops, and "next" statements. 
-Today, we will focus mostly on the "for loop".
+Today, we will focus mostly on the "for loop" and "if, else" statements.
 
 There is a lot of information on control structures elsewhere. 
 A succinct tutorial of common control structures in R can be found at https://ramnathv.github.io/pycon2014-r/learn/controls.html
 You can also take a look at `?Control` for documentation. 
 
-```{r, results = 'hide'}
+```{r, echo=FALSE, results = 'hide'}
 rm(list = ls()) # clear working directory
 ```
 
@@ -46,21 +46,34 @@ The following text will walk you through how to use and implement 'if, else' con
 2. An example of the an "if, else" control structure.  
 
 ```{r, results='hide'}
-x <- 1:15
-if (sample(x, 1) <= 10) {
-   print(paste("x is",x ,"and is less than 10"))
+x <- sample(1:15, size=1)
+
+if (x <= 10) {
+  paste("x is", x, "and is less than, or equal to, 10")
 } else {
-   print(paste("x is",x,"and is greater than 10"))
+  paste("x is", x, "and is greater than 10")
 }
 ```
 
-3. "if" accepts logical values (e.g., <, >=, !=); can accept numbers but not strings.  
+3. "if" accepts logical values (TRUE or FALSE) often resulting from logical operators  (e.g., <, >=, !=. see `?Logic`); can accept numbers (0 is FALSE, any other number is TRUE) but not strings.  
 
 4. "if" can be complemented by an "else"  
 
 5. `ifelse()` is a function that can be used in R (e.g., ifelse(test_expression, x, y))
 
-6. if-else can be strung to create hierarchy of tests  
+6. if-else can be strung to create hierarchy of tests:  
+```{r, results='hide'}
+x <- sample(1:15, size=1)
+
+if (x==10){
+  paste("x is", x, "and is equal to 10")
+} else if (x < 10) {
+  paste("x is", x, "is less than 10")
+} else {
+  paste("x is", x, "is greater than 10")
+}
+```
+
 
 ### B. For-Loops
 These control structures execute an iterative task. 
@@ -68,15 +81,17 @@ For-loops are made up of two basic parts.
 The first part, sometimes referred to as the header, specifies the iteration and has a loop counter. 
 The second part of the for-loop is the body, which contains an operation that is executed upon each iteration. 
 
-**Syntax**
-The specific syntax of for-loops will look different in other languages but basic syntax and structure remains the same.  
+**Syntax**  
+The specific syntax of for-loops will look different in other languages but the basic syntax and structure remains the same.  
 
-1. Start a loop with for  
+1. Start a loop with `for`  
+
 2. Declare variable and number of iterations  
-3. Tasks to perform in code block (or "body")  
 
-                     1.     2.         3.  
-In R this looks like: for(i in 1:10){ print(i) }  
+3. Tasks to perform in code block (or "body") 
+
+                          1    2          3  
+In R this looks like: for (i in 1:10) { print(i) }  
 
 ```{r, results='hide'}
 for(i in 1:10){
@@ -92,22 +107,22 @@ For example, let's print out a list of fruits.
 ```{r, results='hide'}
 x <- c("apples", "oranges", "bananas", "strawberries") # x is a vector of fruit names
 
+for (i in x) {
+    print(i)
+}
+
+```
+
+Note that a for-loop can iterate over any type of vector: logical, numerical, string. In this example assign the iteration counter variable to hold the value of each item in out vector. You can also iterate over vectors using indices (R counts from 1 and not from 0 like some other languages).     
+```{r, results='hide'}
 for (i in seq(x)) {
     print(x[i])
 }
 ```
 
-Note that a for-loop can iterate over any type of vector: logical, numerical, string. 
-You can also iterate over vectors using indices (R counts from 1 and not from 0 like some other languages) or assign i as a local variable that holds the value of each item in a vector.  
-```{r, results='hide'}
-for (i in x) {
-    print(i)
-}
-```
-
 You can use for-loops to transform vectors. 
-The two scripts below give use the length of the strings in our vector. 
-However, the first one prints to the screen a local scalar variable, `len`, and the second uses the loop to fill a global scalar vector, `len`, that now holds the length of each string.  
+The two scripts below give us the length of the strings in our vector. 
+The first one prints to the screen the variable `len` that changes with each iteration. The second uses the loop to fill a vector, `len`, that now holds the length of each string in the corresponding vector index of `x`.  
 
 ```{r, results='hide'}
 for (i in seq(x)) {
@@ -129,7 +144,7 @@ In R, there are some other ways to achieve the same power.
 For example, the function `tapply()` executes a function to specific elements of a data frame, `apply()` executes a function (e.g., mean) to the rows or columns of a data frame, and `sapply()` performs a function on list or array.  
 
 These functions are easier to implement and are also more computationally efficient. 
-Check out `?tapply`, ?apply`, `?sapply`.
+Check out `?tapply`, `?apply`, `?sapply`.
 
 ```{r, results='hide'}
 len <- sapply(x, nchar)
@@ -153,7 +168,7 @@ for(i in 1:10){
 
 ### D. While loops  
 Another loop control structure is the "while loop".
-While loops are sort of like repeating "if" statement; that is, it continues to operate until a conditional statement changes (e.g., "true" becomes "false"). 
+While loops are sort of like repeating "if" statement; that is, it continues to operate until a conditional statement changes (i.e TRUE becomes FALSE). 
 
 Here is an example of a while loop.  
 
@@ -165,7 +180,7 @@ while (i < 10) {
 }
 ```
 
-Notice that a while loop needs an specific break point.  
+Notice that a while loop needs an specific break point (see `?break`.  
 
 What would happen if the code block was changed to subtract 1 from i in each iteration of the loop?  
 If you dare, try this out!
@@ -188,13 +203,13 @@ For example the uniform distribution (an equal probability for all values) is ca
 ```{r, eval=FALSE}
 dunif(x, min = 0, max = 1, log = FALSE)                       # Density  
 punif(q, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)  # Probaility  
-qunif(p, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)  # Qunatile  
+qunif(p, min = 0, max = 1, lower.tail = TRUE, log.p = FALSE)  # Qunatiles  
 runif(n, min = 0, max = 1)                                    # Random Sample  
 ```
 
 **A Brief Note on Random Sampling by Computers**  
-Computers can't generate truly random number, but rather pseudo-random numbers. 
-This is achieved by a function that generates sequences of numbers that behave like random numbers, but are completely determined by the functions input known as a *seed*. 
+Computers can't generate truly random numbers, but rather pseudo-random numbers. 
+This is achieved by a function that generates sequences of numbers that behave like random numbers, but are completely determined by the function's input known as a *seed*. 
 Put in the same seed twice and you will get the same sequence of numbers.   
 
 ### B. Generating the Source Community    
@@ -204,6 +219,9 @@ We will draw a sequence of random numbers from the log-normal distribution.
 Each of these numbers will represent the abundance of a single species in our simulated community.  
 
 ```{r , results='hide'}
+#clear the environment
+rm(list=ls())
+
 # for reproducible results we will set the seed
 set.seed(6)
 
@@ -215,7 +233,7 @@ jelly.jar <- as.integer(jelly.jar)
 ```
 
 Let's plot the rank-abundance curve of our community using the `rad` function from the `vegan` package  
-```{r, results='hide', message=FALSE, warning=FALSE}
+```{r, results='hide', message=FALSE, warning=FALSE, fig.width = 5, fig.height = 3.5, fig.align='center'}
 require (vegan)
 RACresults <- rad.lognormal(jelly.jar)
 plot(RACresults, las = 1, cex.lab = 1.4, cex.axis = 1.25)
@@ -227,23 +245,23 @@ Next we will write a function that will draw a random sample from our `jelly.jar
 Take a moment to break down the process of sampling into a sequence of actions.  
 
 One such sequence may be:  
-1. draw random jelly bean  
-2. classify jelly bean color  
-3. add 1 to list of colors by color sampled  
-4. repeat steps 1-3 *N* times, where *N* is your sample size  
+1. Draw a random jelly bean.  
+2. Classify jelly bean color.  
+3. In a list of colors add 1 to color of current sample.  
+4. Repeat steps 1-3 *n* times, where *n* is your sample size.  
 
 This sequence of actions is an algorithm. 
 Here is how looks in a user-defined function:  
 
 ```{r, results='hide'}
 sample.community <- function (x,n){
-  # write out an explicit vector of the community  
+  # write out an explicit vector of the community
   all.individuals <- rep(seq(x), x)
   
   # take n samples from the community
   survey <- sample(all.individuals,n)
   
-  # prepare vector of species with 0 in each bin
+  # prepare vector of species with 0 in each bin 
   survey.sum <- rep(0, length(x))
   
   # add 1 to species bin each time an individual of that species was sampled 
@@ -292,7 +310,7 @@ R produces an error message:
 The first line of this message indicates the function that produced it. 
 In this case it is the `sample.int()` function. 
 This function is nested within the `sample()` function (you can see the code for `sample` by typing *sample* without brackets in the console). 
-The second line of the error message tells us that you cannot take more sample the the population size unless you set the `replace` argument to TRUE. 
+The second line of the error message tells us that you cannot take more samples than the population size, unless you set the `replace` argument to TRUE. 
 This message is very helpful.
 
 To prevent such errors, that could lead to unexpected behavior of your code, it is a good idea to test the input of functions before processing it in the function. 
@@ -345,15 +363,13 @@ S
 How well do these three indices estimate the true diversity? 
 Using our simulated community we can test that! 
 We will draw repeated samples from our source community and estimate *S* for each of them. 
-Last, we will look at the distribution of the results compared to the true *S*.  
+Then we will look at the distribution of the results compared to the true *S*.  
 
-```{r}
+```{r,  fig.height = 3.8, fig.align='center'}
 # Number of individuales per sample
 n <- 100
-
 # Number of repeated samples
 N <- 1000
-
 # initialize matrix to store results
 repeated.S <- matrix(NA, nrow = N, ncol = length(S))
 colnames(repeated.S) <- names(S)
@@ -366,11 +382,14 @@ for (i in seq(N)){
 
 #plot distribution of results as histogram
 plot.new()
-par(mfrow=c(1,3))
+par(mfrow=c(1,3)) 
+#find range of all data so plots have same x axis
+x.lim <- range(repeated.S[,c("S.obs", "S.chao1", "S.ACE")])
+
 for (i in c("S.obs", "S.chao1", "S.ACE")){
-  hist(repeated.S[,i],prob=TRUE,  cex.lab = 1.4, cex.axis = 1.25, xlab = i, 
-  main = NULL, col = "grey", las = 1)
-  
+  hist(repeated.S[,i], prob=TRUE,  cex.lab = 1.4, cex.axis = 1.25,
+       xlab = i, main = NULL, col = "grey", las = 1, 
+       xlim = x.lim, breaks = seq(x.lim[1], x.lim[2]+1, by=2))
   #add dashed line to mark true S
   abline(v = length(jelly.jar), lty = 2, lwd = 3)
 }
@@ -389,7 +408,7 @@ Quantitatively, data from the collector's curve can be fit with mathematical fun
 In the code chunks below, we will first take a single sample of size *N* from the source community.
 We will then use for-loops to sample the source community with increasing effort (i.e., *N* + 1) while recording sample richness:
  
-```{r}
+```{r,fig.height = 4, fig.align='center'}
 #take a single sample of size N from the source community
 N<-1000
 sample.jelly <- sample.community(jelly.jar,n = N)
@@ -415,7 +434,7 @@ Given that resources (time and money) are often limiting, what sample size would
 In **4. Alpha Diversity** we introduced Shannon's diversity index:
 
 $$H' = -\sum_{i=1}^n p_i\;  ln (p_i)$$  
-where $p_i$ is the proportion of individuals found in the *i*^th^ species. Note that $\sum_{i=1}^n$ is a mathematical `for` loop requiring an iteration over `i in 1:n` and executing $p_i\;  ln (p_i)$ in every iteration. Thus, this equation is equivalent to the following function:  
+where $p_i$ is the proportion of individuals found in the *i*^th^ species. Note that $\sum_{i=1}^n$ is a mathematical `for` loop requiring an iteration over `(i in 1:n)` and executing $\{p_i\;  ln (p_i)\}$ in every iteration. Thus, this equation is equivalent to the following function:  
 ```{r}
 ShanH <- function(x){
   H = 0
