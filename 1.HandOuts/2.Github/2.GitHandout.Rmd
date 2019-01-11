@@ -130,8 +130,7 @@ The following commands will set the location of your **upstream remote repositor
     During this semester, we will edit Markdown files using RStudio.
     On the lab computers, you can find RStudio in the **Analysis & Modeling Folder**.
     From RStudio, navigate to and open your README.md file in the root of your student repo.
-    Update your '*Student Name*' with your full name. 
-    Enter your email address. 
+    After the text "Quantitative Biodiveristy course, Spring 2019, Indiana University", enter your name and email address.
     Write a short biography (~1 paragraph) and share something about yourself that we might not otherwise know. 
     List three to five course expectations. 
     Hint: View the Markdown guide to learn about formatting and making ordered lists <https://guides.github.com/features/mastering-markdown/>. 
