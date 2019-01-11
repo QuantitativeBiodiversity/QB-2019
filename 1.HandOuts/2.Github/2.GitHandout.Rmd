@@ -14,7 +14,7 @@ All in-class work will be concucted on Mac desktop computers.
 You will use Git and GitHub on your Mac desktop computer to access and record changes to **worksheets** that contain in-class **exercises** and **assigments** that will eventually be submitted.
 The instructions below will show you how to configure github on a computer. 
 After that, you will learn how to **fork** and **clone** a GitHub repositiory. 
-Finally, you will learn how to **commit** abd **push** changes so that you can access them later on your personal computer using **fetch** and **merge** commands.  
+Finally, you will learn how to **commit** and **push** changes so that you can access them later on your personal computer using **fetch** and **merge** commands.  
 
 ***
 
