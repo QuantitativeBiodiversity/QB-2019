@@ -13,7 +13,7 @@ It is designed to be used along side the **3. RStudio** handout in your binder.
 You will not be able to complete the exercises without the corresponding handout.
 
 ## Directions:
-1. Change "Student Name" on line 3 (above) with your name.
+1. In the Markdown version of this document in your clone repo, change "Student Name" on line 3 (above) with your name.
 2. Complete as much of the worksheet as possible during class.
 3. Use the handout as a guide; it contains a more complete description of data sets along with examples of proper scripting needed to carry out the exercises.
 4. Answer questions in the  worksheet.
