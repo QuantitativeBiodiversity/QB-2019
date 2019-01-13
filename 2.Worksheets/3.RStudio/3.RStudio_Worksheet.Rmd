@@ -266,7 +266,7 @@ Using the R code chunk below, do the following:
 
 ## SYNTHESIS: SITE-BY-SPECIES MATRIX
 
-In the R code chunk below, load the zoop.txt data set in your **3.RStudio** data folder.
+In the R code chunk below, load the zoops.txt data set in your **3.RStudio** data folder.
 Create a site-by-species matrix (or dataframe) that does *not* include TANK or NUTS.
 The remaining columns of data refer to the biomass (µg/L) of different zooplankton taxa: 
   
