@@ -1,5 +1,5 @@
 ---
-title: '8\. Local (alpha) Diversity'
+title: '8\. Among site (beta) Diversity'
 author: "Z620: Quantitative Biodiversity, Indiana University"
 header-includes:
    - \usepackage{array}
