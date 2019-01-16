@@ -70,9 +70,23 @@ If you do not have a current RStudio version installed on your computer (v 1.0.1
 Behind the scences, we will be using the typsettings systems LaTeX.
 LaTeX will be used by RStudio and the R package `Knitr` to convert our RMarkdown files (.Rmd) into professional-quality PDF files. 
 This will happen each time we use the "Knit" button in RStudio.
-This means that we need to have LaTeX installed, along with a few other packages. 
-If you do not have LaTeX installed on your computer, please do the following: 
+This means that we need to have LaTeX installed, along with a few other packages.   
+Note that the `Knitr` conversion will output a .pdf  file with the same name as the processesd .Rmd file. This cannot be completed if the target file is being used by another program such as a PDF reader.  
 
+If you do not have LaTeX installed on your computer, please do one of the following: 
+
+**Install TinyTeX**  
+This is a cross platform LaTeX distribution developed with R users in mind (<https://yihui.name/tinytex/>). The `tinytex` R package can be used to install TinyTeX from the R console quite easily with the following 2 commands:  
+```{r, eval=FALSE}
+#requires web access
+install.packages('tinytex') 
+tinytex::install_tinytex()
+```
+during instalation a couple of error messages may popup. These may be ignored, just hit the `OK` button and the instalation should continue. It takes several minutes to complete.
+Once the insatlation is complete you should restart RStudio and check if TinyTex properly installed by typing `tinytex:::is_tinytex()` in the R console. If the returned value is `TRUE` you should be good to knit .Rmd files to PDF.
+
+###Alternative installation method  
+If for some reason TinyTex faile to install on you machine you can try the following:  
 **On a Mac**:
 
 1. Install Basic Tex: https://tug.org/mactex/morepackages.html
@@ -115,4 +129,4 @@ mpm --install framed
 mpm --install titling
 ```
 
-Note that the `Knitr` conversion will output a .pdf  file with the same name as the processesd .Rmd file. This cannot be completed if the target file is being used by another program such as a PDF reader.
+
