@@ -18,9 +18,11 @@ In this short document, we show you how to add SSH keys to your local computers 
 ##1) GENERATE AN SSH KEY
 
 ### Using Rstudio
-You can generate an SSH key in RStudio by going to Preferences and choosing the Git/SVN tab (with box-looking icon). 
+You can generate an SSH key in RStudio by going to Preferences and choosing the Git/SVN tab (with box-looking icon).
+Depending on the version of RStudio on your local computer this same tab is found in a dialog box that is accessed by opening the Tools tab and clicking on Global Options.
 Make sure box is checked for `Enable version control interface for RStudio projects`.
-In the Git executable box, it may say `/usr/bin/git` and SVN executable box may say `usr/bin/svn`. 
+In the Git executable box, it may say `/usr/bin/git` and SVN executable box may say `usr/bin/svn`.
+For Windows users the Git executable box may contain `C:/Program Files/Git/bin/git.exe`.
 In the `SSH RSA Key` box, you should type `~/.ssh/id_rsa/`. 
 You can then hit the button that says `Create RSA Key...`
 You can now view the public key. 
@@ -71,3 +73,11 @@ ssh-add
 ```
 
 **On PC**: 
+
+For windows users who are using git bash the above "ssh" commands will all end in .exe (e.g. `ssh-keygen.exe`). 
+
+Additionally, pbcopy is a Mac specific program, but you can use `clip.exe` command.
+
+```
+clip.exe < ~/.ssh/id_rsa.pub
+```
