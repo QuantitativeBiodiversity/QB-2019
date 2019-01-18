@@ -91,7 +91,7 @@ Let's write a function for Good's Coverage:
 
 ```{r}
 C <- function(x = ""){
-  1 - (sum(x == 1) / rowSums(x))
+  1 - (rowSums(x == 1) / rowSums(x))
   }
 ```
   
