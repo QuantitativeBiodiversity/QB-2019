@@ -1,0 +1,56 @@
+---
+title: '6\. Worksheet: Diversity Sampling'
+author: "Student Name; Z620: Quantitative Biodiversity, Indiana University"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: pdf_document
+geometry: margin=2.54cm
+---
+
+## OVERVIEW
+
+In this worksheet, you will use the jelly bean site-by-species matrix generated from **6. Diversity Sampling**.
+Along with tools outlined in the **5. Local (alpha) Diversity** and **7. Control Structures** handouts, you will develop questions, visualize data, and test hypotheses related to sampling effects and its effect on estimates of within-sample biodiversity. 
+
+
+## Directions:
+1. In the Markdown version of this document in your cloned repo, change "Student Name" on line 3 (above) to your name.
+2. Complete as much of the worksheet as possible during class.
+3. Refer to previous handout to help with developing of questions and writing of code.
+4. Answer questions in the  worksheet.
+Space for your answer is provided in this document and indicated by the ">" character.
+If you need a second paragraph be sure to start the first line with ">".
+You should notice that the answer is highlighted in green by RStudio (color may vary if you changed the editor theme).
+5. Before you leave the classroom, **push** this file to your GitHub repo.
+6. For the assignment portion of the worksheet, follow the directions at the bottom of this file. 
+7. When you are done, **Knit** the text and code into a PDF file.
+8. After Knitting, submit the completed exercise by creating a **pull request** via GitHub.
+Your pull request should include this file `6.DiversitySampling_Worskheet.Rmd` and the PDF output of `Knitr` (`DiversitySampling_Worskheet.pdf`).
+
+
+## 1) Group brainstorming 
+
+With your team partner and perhaps other students in the class, spend 15 minutes or so brainstorming questions, code, "fantasy figures", and statistical tests that could be used to test questions with the class's data represented in the site-by-species matrix that you have generated. 
+
+## 2) Code
+
+Use the space below for code that is being used to analyze your data and test your hypotheses. 
+Create one (and only one, although it can have multiple panels) *publication quality* figure. 
+Make sure to annotate your code using # symbols so others (including instructors) understand what you have done and why you have done it. 
+
+```{r}
+
+
+
+
+```
+
+## 3) Figure caption 
+
+Write an informative yet succicnt (~5 sentences) caption that creates a "stand-alone" figure. 
+Take a peek at figures and figure captions in a paper published in your favorite journal for inspiration.
+
+## SUBMITTING YOUR ASSIGNMENT
+Use Knitr to create a PDF of your completed 6.DiversisitySampling_Worksheet.Rmd document, push it to GitHub, and create a pull request.
+Please make sure your updated repo includes both the pdf and RMarkdown files.
+
+Unless otherwise noted, this assignment is due on **Wednesday, January 30^th^, 2017 at 12:00 PM (noon)**.

@@ -451,7 +451,7 @@ How many species are there in the entire site-by-species matrix?
 Any other interesting observations based on what you learned this week?
 
 ## SUBMITTING YOUR ASSIGNMENT
-Use Knitr to create a PDF of your completed alpha_assignment.Rmd document, push it to GitHub, and create a pull request.
-Please make sure your updated repo include both the HTML and RMarkdown files.
+Use Knitr to create a PDF of your completed 5.AlphaDiversity_Worksheet.Rmd document, push it to GitHub, and create a pull request.
+Please make sure your updated repo include both the pdf and RMarkdown files.
 
 Unless otherwise noted, this assignment is due on **Wednesday, January 23^rd^, 2017 at 12:00 PM (noon)**.
