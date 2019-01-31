@@ -8,11 +8,11 @@ geometry: margin=2.54cm
 ---
 
 ## OVERVIEW
-In this exercise, we move beyond the investigation of within-site $\alpha$-diversity.
+In this handout, we move beyond the investigation of within-site $\alpha$-diversity.
 We will explore $\beta$-diversity, which is defined as the diversity that occurs among sites. 
 To analyze how diversity varies across sites, we must examine the compositional similarity of assemblages that vary in space or time. 
 
-After completing this exercise you will know how to:
+After working through this handout, you will know how to:
 
 1. formally quantify $\beta$-diversity
 2. visualize $\beta$-diversity with heatmaps, cluster analysis, and ordination
@@ -52,7 +52,7 @@ In this exercise, we introduce a new dataset containing information on stream fi
 The data set (`doubs`) includes fish abundances, environmental variables, and spatial coordinates for 30 sites. 
 The data set has previously been used to demonstrate that fish communities can be good indicators of ecological zones in rivers and streams. 
 
-Let's load `doubs` data set, which is in the`ade` package.
+Let's load `doubs` data set, which is in the `ade` package.
 
 ```{r, results = 'hide', message = FALSE, warning = FALSE} 
 data(doubs)
@@ -98,7 +98,7 @@ spa.N.color <- rev(terrain.colors(7))     # Define Abundance Color Pallette
 
 # Stream Fish Richness
 plot(doubs$xy, asp = 1, type = 'l', col = "light blue", lwd = 10, las = 1, cex.axis = 0.75,
-     xlim = c(0,280), ylim = c(0,280), main = "Fish Richneses (S)", 
+     xlim = c(0,280), ylim = c(0,280), main = "Fish Richness (S)", 
      xlab = "X-Coordinate (km)", ylab = "Y-Coordinate (km)")
 points(doubs$xy, pch = 22, cex=2, bg = spa.S.color[spa.S + 1])
 text(doubs$xy, as.character(spa.S), cex = 0.5, col = "red")

@@ -348,11 +348,6 @@ In the R code chunk below, please do the following:
 
 ```
 
-***Question 7***: Compare estimates of evenness for `site1` of BCI using $E_{H'}$ and $E_{var}$.
-Do they agree? If so, why? If not, why? What can you infer from the results.
-
-> ***Answer 7***:
-
 ### Fisher's $\boldsymbol\alpha$
 
 In the R code chunk below, please do the following:
@@ -377,9 +372,9 @@ In the R code chunk below, please do the following:
 
 ```
 
-***Question 8***: How is Fisher's $\boldsymbol\alpha$ different from $E_{H'}$ and $E_{var}$? What does Fisher's $\boldsymbol\alpha$ take into account that $E_{H'}$ and $E_{var}$ do not?
+***Question 7***: How is Fisher's $\boldsymbol\alpha$ different from $E_{H'}$ and $E_{var}$? What does Fisher's $\boldsymbol\alpha$ take into account that $E_{H'}$ and $E_{var}$ do not?
 
-> ***Answer 8***:
+> ***Answer 7***:
 
 ##6) MOVING BEYOND UNIVARIATE METRICS OF $\alpha$ DIVERSITY
 
@@ -411,15 +406,15 @@ In the R code chunk below, please do the following:
 ```
 
 
-***Question 9***: Answer the following questions about the rank abundance curves:
+***Question 8***: Answer the following questions about the rank abundance curves:
 a) Based on the output of `radfit()` and plotting above, discuss which model best fits our rank-abundance curve for `site1`?
 b) Can we make any inferences about the forces, processes, and/or mechanisms influencing the structure of our system, e.g., an ecological community?
 
-> ***Answer 9a***:  
-> ***Answer 9b***:
+> ***Answer 8a***:  
+> ***Answer 8b***:
 
 
-***Question 10***: Answer the following questions about the preemption model:
+***Question 9***: Answer the following questions about the preemption model:
 a.  What does the preemption model assume about the relationship between total abundance (*N*) and total resources that can be preempted?
 b.  Why does the niche preemption model look like a straight line in the RAD plot?
 
@@ -428,7 +423,7 @@ b.  Why does the niche preemption model look like a straight line in the RAD plo
 
 
 
-***Question 11***: Why is it important to account for the number of parameters a model uses when judging how well it explains a given set of data?
+***Question 10***: Why is it important to account for the number of parameters a model uses when judging how well it explains a given set of data?
 
 > ***Answer 11***:
 
