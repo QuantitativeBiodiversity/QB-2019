@@ -84,7 +84,7 @@ We will revisit the environmental and community data that we used in the Spatial
 As a reminder, in 2013 we sampled more than 50 forested ponds located in Brown County State Park, Yellowwood State Park, and Hoosier National Forest in southern Indiana. 
 In addition to measuring a suite of geographic and environmental variables, we characterized the diversity of bacteria in the ponds using molecular-based approaches.
 Specifically, we amplified the 16S rRNA gene (i.e., the DNA sequence) and 16S rRNA transcripts (i.e., the RNA transcript of the gene) of bacteria using barcoded primers on the Illumina MiSeq platform.
-The recovery of a 16S rRNA gene tells us that a certain taxon was present in a pond, while the recovery of a 16S rRNA transcript provides information about the metabolic activity of that taxon.  
+The recovery of a 16S rRNA gene tells us that a certain taxon was present in a pond, while the recovery of a 16S rRNA transcript provides information about the metabolic activity of that taxon.
 We used a `mothur` pipeline to quality-trim our data set and assign sequences to operational taxonomic units (OTUs), which resulted in a site-by-OTU matrix.  
 In this module we will focus on taxa that were present (i.e., DNA), but there will be a few steps where we need to parse out the transcript (i.e., RNA) samples.
 

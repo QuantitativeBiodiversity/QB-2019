@@ -1,5 +1,5 @@
 ---
-title: "Phylogenetic Diversity - Communities"
+title: '12\.Phylogenetic Diversity - Communities'
 author: "Student Name; Z620: Quantitative Biodiversity, Indiana University"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: pdf_document
@@ -8,7 +8,7 @@ geometry: margin=2.54cm
 
 ## OVERVIEW
 Complementing taxonomic measures of $\alpha$- and $\beta$-diversity with evolutionary information yields insight into a broad range of biodiversity issues including conservation, biogeography, and community assembly. 
-In this assignment, you will be introduced to some commonly used methods in phylogenetic community ecology.
+In this worksheet, you will be introduced to some commonly used methods in phylogenetic community ecology.
 
 After completing this assignment you will know how to:
 
@@ -17,16 +17,18 @@ After completing this assignment you will know how to:
 3.  evaluate the contribution of phylogeny to spatial patterns of biodiversity
 
 ## Directions:
-1. Change "Student Name" on line 3 (above) with your name.
-2. Complete as much of the assignment as possible during class; what you do not complete in class will need to be done outside of class.
-3. Use the handout as a guide; it contains a more complete description of data sets along with the proper scripting needed to carry out the exercise.
-4. Be sure to **answer the questions** in this exercise document; they also correspond to the handout.
-Space for your answer is provided in this document and indicated by the ">" character.
+1. In the Markdown version of this document in your cloned repo, change "Student Name" on line 3 (above) with your name.
+2. Complete as much of the worksheet as possible during class.
+3. Use the handout as a guide; it contains a more complete description of data sets along with examples of proper scripting needed to carry out the exercises.
+4. Answer questions in the  worksheet.
+Space for your answers is provided in this document and is indicated by the ">" character.
 If you need a second paragraph be sure to start the first line with ">".
-5. Before you leave the classroom, **push** this file to your GitHub repo.
-6. When you are done, **Knit** the text and code into a PDF file.
-7. After Knitting, please submit the completed assignment by creating a **pull request** via GitHub.
-Your pull request should include this file *PhyloCom_assignment.Rmd* and the PDF output of `Knitr` (*PhyloCom_assignment.pdf*).
+You should notice that the answer is highlighted in green by RStudio (color may vary if you changed the editor theme). 
+5. Before you leave the classroom today, it is *imperative* that you **push** this file to your GitHub repo, at whatever stage you are. This will enable you to pull your work onto your own computer.
+6. When you have completed the worksheet, **Knit** the text and code into a single PDF file by pressing the `Knit` button in the RStudio scripting panel.
+This will save the PDF output in your '8.BetaDiversity' folder.
+7. After Knitting, please submit the worksheet by making a **push** to your GitHub repo and then create a **pull request** via GitHub.
+Your pull request should include this file *12.PhyloCom_Worksheet.Rmd* and the PDF output of `Knitr` (*12.PhyloCom_Worksheet.pdf*).
 
 ## 1) SETUP
 
@@ -43,20 +45,17 @@ In the R code chunk below, provide the code to:
 ```{r}
 
 
-
-
-
-
-
-
-
-
 ```
 
 ## 2) DESCRIPTION OF DATA
 
-We will revisit the data that was used in the Spatial Diversity module. 
-As a reminder, in 2013 we sampled ~ 50 forested ponds located in Brown County State Park, Yellowwood State Park, and Hoosier National Forest in southern Indiana. 
+### need to discuss data set from spatial ecology!
+ 
+In 2013 we sampled > 50 forested ponds in Brown County State Park, Yellowwood State Park, and Hoosier National Forest in southern Indiana. 
+In addition to measuring a suite of geographic and environmental variables, we characterized the diversity of bacteria in the ponds using molecular-based approaches.
+Specifically, we amplified the 16S rRNA gene (i.e., the DNA sequence) and 16S rRNA transcripts (i.e., the RNA transcript of the gene) of bacteria.
+We used a program called `mothur` to quality-trim our data set and assign sequences to operational taxonomic units (OTUs), which resulted in a site-by-OTU matrix.  
+In this module we will focus on taxa that were present (i.e., DNA), but there will be a few steps where we need to parse out the transcript (i.e., RNA) samples.
 See the handout for a further description of this week's dataset.
 
 ## 3) LOAD THE DATA
@@ -70,11 +69,6 @@ In the R code chunk below, do the following:
 6. load the taxonomic data using the `read.tax()` function from the source-code file.
 
 ```{r}
-
-
-
-
-
 
 
 ```
@@ -91,13 +85,6 @@ Next, in the R code chunk below, do the following:
 9. plot the rooted tree.
 
 ```{r}
-
-
-
-
-
-
-
 
 
 ```
@@ -121,9 +108,6 @@ In the R code chunk below, do the following:
 ```{r}
 
 
-
-
-
 ```
 
 ***Question 1***: Answer the following questions about the PD-S pattern.    
@@ -143,8 +127,6 @@ In the R code chunk below, do the following:
 1. estimate the standardized effect size of PD using the `richness` randomization method.  
 
 ```{r}
-
-
 
 
 ```
@@ -178,10 +160,6 @@ In the R code chunk below, do the following:
 ```{r}
 
 
-
-
-
-
 ```
 
 **iii.  Nearest Taxon Index (NTI)**
@@ -190,7 +168,6 @@ In the R code chunk below, do the following:
 1. Calculate the NTI for each site in the Indiana ponds data set. 
 
 ```{r}
-
 
 
 ```
@@ -219,17 +196,12 @@ In the R code chunk below, do the following:
 ```{r}
 
 
-
-
 ```
 
 In the R code chunk below, do the following:  
 1. plot Mean Pair Distance versus UniFrac distance and compare.
 
 ```{r}
-
-
-
 
 
 ```
@@ -257,10 +229,6 @@ In the R code chunk below, do the following:
 ```{r}
 
 
-
-
-
-
 ```
 
 Now that we have calculated our PCoA, we can plot the results.
@@ -274,23 +242,14 @@ In the R code chunk below, do the following:
 ```{r}
 
 
-
-
-
-
-
-
-
-
-
-
 ```
 
 In the following R code chunk:
 1. perform another PCoA on taxonomic data using an appropriate measure of dissimilarity, and
 2. calculate the explained variation on the first three PCoA axes. 
 
-***Question 5***: Using a combination of visualization tools and percent variation explained, how does the phylogenetically based ordination compare or contrast with the taxonomic ordination? What does this tell you about the importance of phylogenetic information in this system?
+***Question 5***: Using a combination of visualization tools and percent variation explained, how does the phylogenetically based ordination compare or contrast with the taxonomic ordination? 
+What does this tell you about the importance of phylogenetic information in this system?
 
 > ***Answer 5***: 
 
@@ -304,9 +263,6 @@ In the R code chunk below, do the following:
 ```{r}
 
 
-
-
-
 ```
 
 **ii. Continuous Approach**
@@ -316,8 +272,6 @@ In the R code chunk below, do the following:
 2. calculate environmental distance between ponds based on the Euclidean distance between sites in the environmental data matrix (after transforming and centering using `scale()`).
 
 ```{r}
-
-
 
 
 ```
@@ -340,14 +294,6 @@ In the R code chunk below, do the following:
 ```{r}
 
 
-
-
-
-
-
-
-
-
 ```
 
 ***Question 6***: Based on the multivariate procedures conducted above, describe the phylogenetic patterns of $\beta$-diversity for bacterial communities in the Indiana ponds.   
@@ -358,6 +304,13 @@ In the R code chunk below, do the following:
 
 ### A. Phylogenetic Distance-Decay (PDD)
 
+A distance decay (DD) relationship reflects the spatial autocorrelation of community similarity.
+That is, communities located near one another should be more similar to one another in taxonomic composition than distant communities.
+(This is analagous to the isolation by distance (IBD) pattern that is commonly found when examining genetic similarity of a populations as a function of space.)
+Historically, the two most common explanations for the taxonomic DD are that it reflects spatially autocorrelated environmental variables and the influence of dispersal limitation. 
+However, if phylogenetic diversity is also spatially autocorrelated, then evolutionary history may also explain some of the taxonomic DD pattern.
+Here, we will construct the phylogenetic distance-decay (PDD) relationship
+
 First, calculate distances for geographic data, taxonomic data, and phylogenetic data among all unique pair-wise combinations of ponds.
 
 In the R code chunk below, do the following:  
@@ -367,13 +320,6 @@ In the R code chunk below, do the following:
 4. create a dataframe that includes all of the above information. 
 
 ```{r}
-
-
-
-
-
-
-
 
 
 ```
@@ -387,19 +333,11 @@ In the R code chunk below, do the following:
 ```{r}
 
 
-
-
-
-
-
-
-
 ```
 
 In the R code chunk below, test if the trend lines in the above distance decay relationships are different from one another.
 
 ```{r}
-
 
 
 ```
@@ -409,48 +347,8 @@ In the R code chunk below, test if the trend lines in the above distance decay r
 > ***Answer 7***: 
 
 
-### B. Phylogenetic diversity-area relationship (PDAR)
-
-**i. Constructing the PDAR**
-
-In the R code chunk below, write a function to generate the PDAR.
-
-```{r}
-
-
-
-
-
-
-
-
-
-```
-
-**ii. Evaluating the PDAR**
-
-In the R code chunk below, do the following:  
-1. calculate the area for each pond,  
-2. use the `PDAR()` function you just created to calculate the PDAR for each pond,  
-3. calculate the Pearson's and Spearman's correlation coefficients,   
-4. plot the PDAR and include the correlation coefficients in the legend, and  
-5. customize the PDAR plot. 
-
-```{r}
-
-
-
-
-
-
-
-```
-
-***Question 8***: Compare your observations of the microbial PDAR and SAR in the Indiana ponds?
-How might you explain the differences between the taxonomic (SAR) and phylogenetic (PDAR)?  
-
-> ***Answer 8***: 
-
 ## SYNTHESIS
 
-Ignoring technical or methodological constraints, discuss how phylogenetic information could be useful in your own research. Specifically, what kinds of phylogenetic data would you need? How could you use it to answer important questions in your field? In your response, feel free to consider not only phylogenetic approaches related to phylogenetic community ecology, but also those we discussed last week in the PhyloTraits module, or any other concepts that we have not covered in this course.
+Ignoring technical or methodological constraints, discuss how phylogenetic information could be useful in your own research. 
+Specifically, what kinds of phylogenetic data would you need? How could you use it to answer important questions in your field? 
+In your response, feel free to consider not only phylogenetic approaches related to phylogenetic community ecology, but also those we discussed last week in the PhyloTraits module, or any other concepts that we have not covered in this course.
