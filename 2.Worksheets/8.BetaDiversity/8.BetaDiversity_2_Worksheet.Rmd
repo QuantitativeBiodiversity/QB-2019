@@ -1,0 +1,177 @@
+---
+title: '8\. Worksheet: Among Site (Beta) Diversity -- Part 2'
+author: "Student Name; Z620: Quantitative Biodiversity, Indiana University"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: pdf_document
+geometry: margin=2.54cm
+---
+
+## OVERVIEW
+
+In this worksheet, we continue to explore concepts, statistics, and visualizations related to $\beta$-diversity.
+Now that you know how to formally quantify $\beta$-diversity, we will learn how to test hypotheses about $\beta$-diversity using multivariate statistics. 
+
+## Directions:
+1. In the Markdown version of this document in your cloned repo, change "Student Name" on line 3 (above) with your name.
+2. Complete as much of the worksheet as possible during class.
+3. Use the handout as a guide; it contains a more complete description of data sets along with examples of proper scripting needed to carry out the exercises.
+4. Answer questions in the  worksheet.
+Space for your answers is provided in this document and is indicated by the ">" character.
+If you need a second paragraph be sure to start the first line with ">".
+You should notice that the answer is highlighted in green by RStudio (color may vary if you changed the editor theme). 
+5. Before you leave the classroom today, it is *imperative* that you **push** this file to your GitHub repo, at whatever stage you are. This will enable you to pull your work onto your own computer.
+6. When you have completed the worksheet, **Knit** the text and code into a single PDF file by pressing the `Knit` button in the RStudio scripting panel.
+This will save the PDF output in your '8.BetaDiversity' folder.
+7. After Knitting, please submit the worksheet by making a **push** to your GitHub repo and then create a **pull request** via GitHub.
+Your pull request should include this file (**8.BetaDiversity_2_Worksheet.Rmd**) with all code blocks filled out and questions answered) and the PDF output of `Knitr` (**8.BetaDiversity_2_Worksheet.pdf**).
+
+The completed exercise is due on **Wednesday, February 13^th^, 2019 before 12:00 PM (noon)**.
+
+## 1) R SETUP
+
+Typically, the first thing you will do in either an R script or an RMarkdown file is setup your environment. 
+This includes things such as setting the working directory and loading any packages that you will need.
+
+In the R code chunk below, provide the code to:  
+
+1. clear your R environment,
+2. print your current working directory,
+3. set your working directory to your "*/8.BetaDiversity*" folder, and
+4. load the `vegan` R package (be sure to install if needed).  
+
+```{r}
+
+
+
+
+```
+
+## 2) LOADING DATA
+### Load dataset
+In the R code chunk below, load the `doubs` dataset from the `ade4` package
+
+```{r}
+# note, pleae do not print the dataset when submitting
+
+
+
+```
+## 3) HYPOTHESIS TESTING
+
+### A.  Multivariate Procedures for Categorical Designs
+Earlier work done in the Doubs River suggested that the river has four distinct regions of habitat quality: the first region (sites 1-14) of "high quality"; the second (sites 15 - 19) and fourth (sites 26 - 30) of "moderate quality"; and the third  (sites 20 - 25) of "low quality".
+
+In the code chunk below, test the hypothesis that fish community composition varies with river quality.
+
+1. create a factor vector that categorizes habitat quality in the Doubs River,
+2. use the multivariate analyses for categorical predictors to describe how fish community structure relates to habitat quality.
+
+```{r}
+
+
+
+
+
+
+
+
+
+```
+
+***Question 1***: Based on the PERMANOVA, IndVal, and phi coefficient analyses, what did you learn about the relationship between habitat quality and the fish species composition?
+Are the different analyses consistent with one another and do they agree with the visualizations (heat maps, cluster dendograms, ordinations) that you created?
+
+> ***Answer 1***: 
+
+
+### B.  Multivariate Procedures for Continuous Designs
+
+### i.  Mantel Test
+In the R code chunk below, do the following:   
+
+1. create distance matrices for both fish communities and environmental factors, and
+2. use a Mantel test to test the hypothesis that fish assemblages are correlated with stream environmental variables.
+
+```{r}
+
+
+
+
+
+```
+
+***Question 2***: What do the results from our Mantel test suggest about fish diversity and stream environmental conditions? 
+How does this relate to your hypothesis about stream quality influencing fish communities?
+
+> ***Answer 2***:  
+
+### ii.  Constrained Ordination
+In the R code chunk below, do the following:  
+
+1. create an environmental matrix of the water chemistry data included in the `doubs` dataset using forward and reverse selection of variables,
+2. conduct a redundancy analysis on the fish assemblages of the Doubs River,
+3. use a permutation test to determine the significance of the constrained analysis,
+4. use a permutation test to determine the correlation of each environmental factor on the constrained axes,
+5. calculate the explained variation on the first and second constrained axes,
+6. plot the constrained ordination results including labeled points for each site, and
+7. add vectors that demonstrate the influence of each environmental factor the constrained ordination.   
+```{r}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+***Question 3***: Based on the constrained ordination, what are the environmental variables (or groups of correlated variables) that seem to be contributing to variation in fish community structure?
+
+> ***Answer 3***: 
+
+### iii. Variation Partitioning
+In the code chunk below,   
+
+1. Create a matrix model of the selected environmental variables,
+2. Create a matrix model of the selected PCNM axes,
+3. Perform constrained and partial constrained ordinations using the spatial and environmental models you just created,
+4. Test the significance of each of your constrained ordinations using permutation tests,
+5. Partition the variation among sites into the relative importance of space, environment, spatially structured environment, and residuals,
+6. Plot the variation partitioning output to visualize it.  
+```{r}
+
+
+
+
+
+
+
+```
+
+***Question 4***: Interpret the variation partitioning results.   
+
+> ***Answer 4***: 
+
+## SYNTHESIS
+
+1) Using the jelly bean data from class (i.e., JellyBeans.txt), perform a PERMANOVA to test whether or not the vicariance event (random splitting of source community) had an affect on jelly bean composition.
+Based on your previous analyses with this data set, what are your thoughts about the importance of stochastic vs. deterministic factors on estimates of biodiversity?
+
+2) Load the dataset you are using for your Team Project. 
+Perform an ordination to visualize your dataset.
+Using this ordination, develop some hypotheses relevant to $\beta$-diversity.
+Use a statistic to test one of these hypotheses.
+Succinctly explain the finding and its relevance to your system.
+

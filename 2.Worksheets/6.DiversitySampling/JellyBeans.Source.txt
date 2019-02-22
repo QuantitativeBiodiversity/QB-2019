@@ -1,27 +1,27 @@
-Flavor	Mix	Count	Description
-Watermelon	None	114	DarkGreen
-Peach	None	138	OrangeRedSpeckled
-Blueberry	None	174	DarkBlue
-SourLemon	Sour	22	BrightYellowRedSpeckled
-SourApple	Sour	29	BrightGreen
-SourCherry	Sour	27	BrightRed
-SourOrange	Sour	29	Orange
-SourGrape	Sour	31	Denim
-StrawberryBlonde	Ice_Cream	27	PinkRedSpeckled
-MintChocolateChip	Ice_Cream	16	MintGreenBrownSpeckled
-BirthdayCakeMix	Ice_Cream	24	WhiteBluePinkSpeckled
-ApplePie	Ice_Cream	16	WhiteBrownSpeckled
-ChocolateDevotion	Ice_Cream	17	Brown
-Lemon	Citrus	49	Yellow
-Grapefruit	Citrus	32	PaleOrange
-Lime	Citrus	50	Green
-Tangerine	Citrus	31	Orange
-JewelSourApple	Jewel	12	LightGreen
-JewelBubbleGum	Jewel	22	SoftPink
-JewelGingerAle	Jewel	22	Rose
-JewelBlueberry	Jewel	13	DarkBlue
-JewelGrapeSoda	Jewel	13	Purple
-JewelVeryCherry	Jewel	16	HotPink
-JewelBerryBlue	Jewel	23	SkyBlue
-JewelCreamSoda	Jewel	9	Ivory
-JewelOrange	Jewel	11	LightOrange
+Flavor	Mix	Student.ID	Count	Description
+Blueberry	None	BlueDrk	174	DarkBlue
+Peach	None	OrangeSpe	138	OrangeRedSpeckled
+Watermelon	None	Watermellon	114	DarkGreen
+Lime	Citrus	GreenTrans	50	Green
+Lemon	Citrus	YellowTrans	49	Yellow
+Grapefruit	Citrus	OrangeBrgt	32	PaleOrange
+SourGrape	Sour	BlueMuted	31	Denim
+Tangerine	Citrus	OrangeLight	31	Orange
+SourApple	Sour	GreenSoild	29	BrightGreen
+SourOrange	Sour	OrangSuperShn	29	Orange
+SourCherry	Sour	Red	27	BrightRed
+StrawberryBlonde	Ice_Cream	PinkSpot	27	PinkRedSpeckled
+BirthdayCakeMix	Ice_Cream	Rainbow	24	WhiteBluePinkSpeckled
+JewelBerryBlue	Jewel	AquaSuperShn	23	SkyBlue
+SourLemon	Sour	YellowSld	22	BrightYellowRedSpeckled
+JewelBubbleGum	Jewel	PinkShn	22	SoftPink
+JewelGingerAle	Jewel	OrangeShn	22	Rose
+ChocolateDevotion	Ice_Cream	PurpleSpot	17	Brown
+MintChocolateChip	Ice_Cream	GreenMintCho	16	MintGreenBrownSpeckled
+ApplePie	Ice_Cream	WhiteBrownSP	16	WhiteBrownSpeckled
+JewelVeryCherry	Jewel	RedShinny	16	HotPink
+JewelBlueberry	Jewel	BlueDrkShn	13	DarkBlue
+JewelGrapeSoda	Jewel	PurpleShn	13	Purple
+JewelSourApple	Jewel	GreenSuperShn	12	LightGreen
+JewelOrange	Jewel	OrangeDrk	11	LightOrange
+JewelCreamSoda	Jewel	WhiteSuperShn	9	Ivory

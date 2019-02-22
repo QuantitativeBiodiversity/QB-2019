@@ -1,5 +1,5 @@
 ---
-title: "Phylogenetic Diversity - Traits"
+title: '11\. Worksheet: Phylogenetic Diversity - Traits'
 author: "Student Name; Z620: Quantitative Biodiversity, Indiana University"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: pdf_document
@@ -19,19 +19,20 @@ After completing this exercise you will be able to:
 3.  test for phylogenetic signal within trait distributions and trait-based patterns of biodiversity
 
 ## Directions:
-
-1. Change "Student Name" on line 3 (above) with your name.
-2. Complete as much of the exercise as possible during class; what you do not complete in class will need to be done on your own outside of class.
-3. Use the handout as a guide; it contains a more complete description of data sets along with the proper scripting needed to carry out the exercise.
-4. Be sure to **answer the questions** in this exercise document; they also correspond to the handout.
-Space for your answer is provided in this document and indicated by the ">" character.
+1. In the Markdown version of this document in your cloned repo, change "Student Name" on line 3 (above) with your name.
+2. Complete as much of the worksheet as possible during class.
+3. Use the handout as a guide; it contains a more complete description of data sets along with examples of proper scripting needed to carry out the exercises.
+4. Answer questions in the  worksheet.
+Space for your answers is provided in this document and is indicated by the ">" character.
 If you need a second paragraph be sure to start the first line with ">".
-5. Before you leave the classroom, **push** this file to your GitHub repo.
-6. For homework, follow the directions at the bottom of this file. 
-7. When you are done, **Knit** the text and code into a PDF file.
-8. After Knitting, please submit the completed exercise by creating a **pull request** via GitHub.
-Your pull request should include this file *PhyloTraits_exercise.Rmd* and the PDF output of `Knitr` (*PhyloTraits_exercise.pdf*).
+You should notice that the answer is highlighted in green by RStudio (color may vary if you changed the editor theme). 
+5. Before you leave the classroom today, it is *imperative* that you **push** this file to your GitHub repo, at whatever stage you are. This will enable you to pull your work onto your own computer.
+6. When you have completed the worksheet, **Knit** the text and code into a single PDF file by pressing the `Knit` button in the RStudio scripting panel.
+This will save the PDF output in your '8.BetaDiversity' folder.
+7. After Knitting, please submit the worksheet by making a **push** to your GitHub repo and then create a **pull request** via GitHub.
+Your pull request should include this file (**11.PhyloTraits_Worksheet.Rmd**) with all code blocks filled out and questions answered) and the PDF output of `Knitr` (**11.PhyloTraits_Worksheet.pdf**).
 
+The completed exercise is due on **Wednesday, February 20^th^, 2019 before 12:00 PM (noon)**.
 
 ## 1) SETUP
 
@@ -41,13 +42,13 @@ This includes things such as setting the working directory and loading any packa
 In the R code chunk below, provide the code to:  
 1. clear your R environment,  
 2. print your current working directory,  
-3. set your working directory to your "*/Week6-PhyloTraits*" folder, and  
+3. set your working directory to your "*/11.PhyloTraits*" folder, and  
 4. load all of the required R packages (be sure to install if needed).  
 
 ```{r}
 rm(list = ls())
 getwd()
-setwd("~/GitHub/QB-2017/Week6-PhyloTraits")
+setwd("~/GitHub/QB-2019/2.Worksheets/11.PhyloTraits")
 
 ```
 
@@ -57,11 +58,10 @@ The maintenance of biodiversity is thought to be influenced by **trade-offs** am
 One such trade-off involves the ability of a highly specialized species to perform exceptionally well on a particular resource compared to the performance of a generalist. 
 In this exercise, we will take a phylogenetic approach to mapping phosphorus resource use onto a phylogenetic tree while testing for specialist-generalist trade-offs. 
 
-
 ## 3) SEQUENCE ALIGNMENT
 
-***Question 1***: Using less or your favorite text editor, compare the `p.isolates.fasta` file and the `p.isolates.afa` file. 
-Describe the differences that you observe between the files. 
+***Question 1***: Using your favorite text editor, compare the `p.isolates.fasta` file and the `p.isolates.afa` file. 
+Describe the differences that you observe between the two files. 
 
 > ***Answer 1***: 
 
@@ -82,10 +82,10 @@ for (package in package.list) {
 
 ```
 
-***Question 2***:  Make some observations about the `muscle` alignment of the 16S rRNA gene sequences for our bacterial isolates and the outgroup, *Methanosarcina*, a member of the domain archaea. 
+***Question 2***:  Make some observations about the `muscle` alignment of the 16S rRNA gene sequences for our bacterial isolates and the outgroup, *Methanosarcina*, a member of the domain Archaea. 
 Move along the alignment by changing the values in the `window` object. 
 
-a. Approximately how long are our reads?  
+a. Approximately how long are our sequence reads?  
 b. What regions do you think would are appropriate for phylogenetic inference and why?  
 
 > ***Answer 2a***:   
@@ -131,7 +131,7 @@ In the R code chunk below, do the following:
 
 In the R code chunk below, do the following:  
 1. pick another substitution model,  
-2. create and distance matrix and tree for this model,  
+2. create a distance matrix and tree for this model,  
 3. make a saturation plot that compares that model to the *Felsenstein (F84)* model,  
 4. make a cophylogenetic plot that compares the topologies of both models, and  
 5. be sure to format, add appropriate labels, and customize each plot.
@@ -331,7 +331,7 @@ In the R code chunk below, do the following:
 
 a. Why do we need to correct for shared evolutionary history?
 b. How does a phylogenetic regression differ from a standard linear regression?
-c. Interpret the slope and fit of each model. Did accounting for shared evolutionary history improve or worsten the fit?
+c. Interpret the slope and fit of each model. Did accounting for shared evolutionary history improve or worsen the fit?
 d. Try to come up with a scenario where the relationship between two variables would completely disappear when the underlying phylogeny is accounted for.
 
 > ***Answer 10a***:  
@@ -342,77 +342,39 @@ d. Try to come up with a scenario where the relationship between two variables w
 
 ## 7) SYNTHESIS
 
-Below is the output of a multiple regression model depicting the relationship between the maximum growth rate ($\mu_{max}$) of each bacterial isolate and the niche breadth of that isolate on the 18 different sources of phosphorus. 
-One feature of the study which we did not take into account in the handout is that the isolates came from two different lakes. 
-One of the lakes is an very oligotrophic (i.e., low phosphorus) ecosystem named Little Long (LL) Lake. 
-The other lake is an extremely eutrophic (i.e., high phosphorus) ecosystem named Wintergreen (WG) Lake.
-We included a "dummy variable" (D) in the multiple regression model (0 = WG, 1 = LL) to account for the environment from which the bacteria were obtained. For the last part of the assignment, plot nich breadth vs. $\mu_{max}$ and the slope of the regression for each lake. Be sure to color the data from each lake differently. 
+Work with members of your Team Project to obtain reference sequences for 10 or more taxa in your study.
+Sequences for plants, animals, and microbes can found in a number of public repositories, but perhaps the most commonly visited site is the National Center for Biotechnology Information (NCBI) <https://www.ncbi.nlm.nih.gov/>.
+In almost all cases, researchers must deposit their sequences in places like NCBI before a paper is published. 
+Those sequences are checked by NCBI employees for aspects of quality and given an **accession number**.
+For example, here an accession number for a fungal isolate that our lab has worked with: JQ797657.
+You can use the NCBI program nucleotide **BLAST** to find out more about information associated with the isolate, in addition to getting its DNA sequence: <https://blast.ncbi.nlm.nih.gov/>.
+Alternatively, you can use the `read.GenBank()` function in the `ape` package to connect to NCBI and directly get the sequence. 
+This is pretty cool.
+Give it a try. 
 
-```{r, echo=FALSE, fig.width=6, fig.height=4}
-p.growth <- read.table("./data/p.isolates.raw.growth.txt", sep = "\t", header = TRUE, row.names = 1)
-umax <- (apply(p.growth, 1, max)) # calculate max growth
-lake <- ifelse(grepl("WG",row.names(p.growth)),'WG', 'LL') # make an empty vector for lake id
-tradeoff <- data.frame(nb,umax,lake) # make new data frame
+But before your team proceeds, you need to give some thought to which gene you want to focus on. 
+For microorganisms like the bacteria we worked with above, many people use the ribosomal gene (i.e., 16S rRNA). 
+This has many desirable features, including it is relatively long, highly conserved, and identifies taxa with reasonable resolution. 
+In eukaryotes, ribosomal genes (i.e., 18S) are good for distinguishing course taxonomic resolution (i.e. class level), but it is not so good at resolving genera or species. 
+Therefore, you may need to find another gene to work with, which might include protein-coding gene like cytochrome oxidase (COI) which is on mitochondria and is commonly used in molecular systematics. 
+In plants, the ribulose-bisphosphate carboxylase gene (*rbcL*), which on the chloroplast, is commonly used.
+Also, non-protein-encoding sequences like those found in **Internal Transcribed Spacer (ITS)** regions between the small and large subunits of of the ribosomal RNA are good for molecular phylogenies.
+With your team members, do some research and identify a good candidate gene. 
 
-D <- (lake == "LL") * 1
-p.growth.std <- p.growth / (apply(p.growth, 1, sum))
+After you identify an appropriate  gene, download sequences and create a properly formatted fasta file.
+Next, align the sequences and confirm that you have a good alignment. 
+Choose a substitution model and make a tree of your choice. 
+Based on the decisions above and the output, does your tree jibe with what is known about the evolutionary history of your organisms? 
+If not, why? 
+Is there anything you could do differently that would improve your tree, especially with regard to future analyses done by your team?
 
-levins <- function(p_xi = ""){
-  p = 0
-  for (i in p_xi){
-    p = p + i^2
-    }
-  nb = 1 / (length(p_xi) * p)
-  return(nb)
-  }
+```{r}
 
-nb <- as.matrix(levins(p.growth.std))
 
-fit<-lm(log10(umax) ~ nb + D + nb * D)
 
-LL.nb <- subset(nb,lake == "LL")		
-WG.nb <- subset(nb,lake == "WG")		
-  		  
-LL.umax <- subset(umax,lake == "LL")		
-WG.umax<-subset(umax,lake == "WG")		
-par(mar=c(4,4,0,1)+ 0.1)		
-plot(LL.nb, log10(LL.umax), axes = F, xlab = "Niche Breadth", ylab = "Maximum Growth Rate", 		
- pch = 21, cex = 2.0, las = 1, col = "black", bg = "white",		
- xlim=c(0,1), ylim = c(-2, 1))		
-points(WG.nb,log10(WG.umax),pch=21,cex=2,col="black", bg="black")		
-box()		
-ticks <- c(0.01, 0.1, 1, 10)		
-axis(side = 1, labels = T, cex.axis = 1)		
-axis(side = 2, las = 1, cex.axis = 1, labels = ticks,		
-  at = log10(ticks))		
-axis(3,labels = F)		
-axis(side = 4, at = log10(ticks), labels = F)		
-
-curve(fit$coefficients[1] + fit$coefficients[2] * x, from = min(WG.nb - 0.1), 		
-  to = max(WG.nb +0.1), add = TRUE, lty = 2)		
-Int <- fit$coefficients[1] + fit$coefficients[3]		
-Slp <- fit$coefficients[2] + fit$coefficients[4]		
-curve((Int) + (Slp) * x, from = min(LL.nb - 0.08), to =max(LL.nb + 0.1), add = TRUE, lty = 2)		
-    		    
-legend("topleft", legend = c("LL","WG"), pch = c(1,16), cex = 1, col = "black", bty = "n")
-summary(fit)		
-coefficients <- coefficients(fit) # model coefficients		
-confit <- confint(fit,level=0.95) # 95% CI for parameters		
-predicted <- fitted(fit) # predicted values		
-residuals <- residuals(fit) # residuals		
-anova <- anova(fit) # anova table		
-vcov <- vcov(fit) # covariance matrix for model parameters		
-influence <- influence(fit) # regression diagnostics		
-par(mfrow = c(2, 2), mar = c(5.1 ,4.1 ,4.1 ,2.1))		
-plot(fit)		
-
-  
 
 ```
 
-***Question 11***: Based on your knowledge of the traits and their phylogenetic distributions, what conclusions would you draw about our data and the evidence for a generalist-specialist tradeoff? 
 
-
-> ***Answer 11***:
 
 

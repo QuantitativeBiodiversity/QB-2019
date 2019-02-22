@@ -55,7 +55,9 @@ The `require()` function in `R` returns `TRUE` if the package was successfully l
 This `for` loop loads each package and installs the package when `require()` returns `FALSE`.
 
 ```{r, results = 'hide', message = FALSE, warning = FALSE, tidy=TRUE, tidy.opts=list(width.cutoff=60)} 
-package.list <- c('ape', 'seqinr', 'phylobase', 'adephylo', 'geiger', 'picante', 'stats', 'RColorBrewer', 'caper', 'phylolm', 'pmc', 'ggplot2', 'tidyr', 'dplyr', 'phangorn', 'pander') 
+package.list <- c('ape', 'seqinr', 'phylobase', 'adephylo', 'geiger', 
+      'picante', 'stats', 'RColorBrewer', 'caper', 'phylolm', 'pmc', 
+      'ggplot2', 'tidyr', 'dplyr', 'phangorn', 'pander') 
 for (package in package.list) {
   if (!require(package, character.only=TRUE, quietly=TRUE)) {
     install.packages(package)
@@ -174,15 +176,14 @@ It is not possible to cover all of these topics in Quantitative Biodiversity, bu
 
 ### A. Neighbor Joining Trees
 
-As a method, nearest neighbor joining takes a distance matrix that specifies the distance between each pair of taxa as input. The algorithm starts with a tree where all taxa are equally related, finds and joins the taxa with the lowest distance into a new node, re-calculates the distance between all the remaining taxa and the new node, and repeats this process until all the taxa are accounted for. 
+As a method, nearest neighbor joining takes a distance matrix that specifies the distance between each pair of taxa as input. 
+The algorithm starts with a tree where all taxa are equally related, finds and joins the taxa with the lowest distance into a new node, re-calculates the distance between all the remaining taxa and the new node, and repeats this process until all the taxa are accounted for. 
 
 Neighbor joining is commonly used for making a "guide tree" that can incorporate more sophisticated models of evolution. 
 The first step in making a neighbor joining tree is to create a distance matrix. 
 We will do this with the `dist.dna` function in the `ape` package. 
 In the R chunk below, the "model = raw" argument means that `dist.dna` will estimate distances based on the proportion of sites that differ between pairs of sequences.
 The "pairwise.deletion = FALSE" argument means that an entire site (i.e., column) is deleted if there is a missing observation (i.e., a gap) for one or more of the sequences (i.e., rows). 
-
-
 
 ```{r}
 # Create Distance Matrix with "raw" Model {ape}
@@ -194,7 +195,8 @@ In the process, we will use *Methanosarcina* as a reference to determine the evo
 By using an outgroup we have a point of comparison for the rest of our taxa (i.e. the **ingroup**), also known as **rooting** the tree. 
 Ideally, the outgroup should be a taxon that you know all of your taxa diverged from farther back in the past than when they diverged from each other.
 
-To store phylogenies we'll be using the `phylo` class, the basic phylogenetic data structure used in R. A `phylo` object stores four objects: 1) the tip labels (i.e. taxa) of the tree, 2) the number of nodes (i.e. the inferred most recent common ancestor) on the tree, 3), the names of the edges (i.e. the evolutionary distance between nodes) on the tree, and 4) and the length of the edges
+To store phylogenies we'll be using the `phylo` class, the basic phylogenetic data structure used in R. 
+A `phylo` object stores four objects: 1) the tip labels (i.e. taxa) of the tree, 2) the number of nodes (i.e. the inferred most recent common ancestor) on the tree, 3), the names of the edges (i.e. the evolutionary distance between nodes) on the tree, and 4) and the length of the edges
 
 At this point, we can plot our tree.
 
@@ -317,16 +319,21 @@ Here we'll calculate branch length score between the raw tree and the tree calcu
 ```{r, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
 # Set method = "PH85" for the symmetric difference
 # Set method = "score" for the symmetric difference
-# This function automatically checks for a root and unroots rooted trees, so you can pass it either the rooted or unrooted tree and get the same answer. 
+# This function automatically checks for a root and unroots rooted trees,
+# so you can pass it either the rooted or unrooted tree and get the same answer. 
 dist.topo(raw.rooted, F84.rooted, method = "score")
 ```
 
 ### D) MAXIMUM LIKELIHOOD TREE
-Often a nearest neighbor joined tree does not accurately reconstruct the real phylogeny. While neighbor joining is very fast and has the convenient property of returning the correct tree for a correct distance matrix, we are rarely in the position where we know the correct distance matrix. In addition, it 1) it only uses a distance matrix, which doesn't take into account specific nucleotide states, 2) it only gives one tree, meaning that it is not a statistical method, and 3) it can be sensitive to the underlying substitution model. Instead, a maximum likelihood (ML) tree is often a superior choice, as it is built on the robust statistical procedure of ML (i.e., the process of finding the parameter value that maximizes the likelihood of the data). 
+Often a nearest neighbor joined tree does not accurately reconstruct the real phylogeny. 
+While neighbor joining is very fast and has the convenient property of returning the correct tree for a correct distance matrix, we are rarely in the position where we know the correct distance matrix. 
+In addition, it 1) it only uses a distance matrix, which doesn't take into account specific nucleotide states, 2) it only gives one tree, meaning that it is not a statistical method, and 3) it can be sensitive to the underlying substitution model. 
+Instead, a maximum likelihood (ML) tree is often a superior choice, as it is built on the robust statistical procedure of ML (i.e., the process of finding the parameter value that maximizes the likelihood of the data). 
 In addition, ML has the advantage of being the estimation method that is least affected by sampling error, is fairly robust to the assumptions of a particularly model, allows you to compare different trees, and takes into account nucleotide states (as opposed to just distance). 
 However, ML estimation is a computationally intensive process that can require a lot of time. 
 
-This is because ML estimation needs to find the tree that gives the data the highest probability, a difficult task that requires the use of optimized algorithms. Because ML estimation can take a long time, we will not ask you to generate a maximum likelihood tree for your assignment. 
+This is because ML estimation needs to find the tree that gives the data the highest probability, a difficult task that requires the use of optimized algorithms. 
+Because ML estimation can take a long time, we will not ask you to generate a maximum likelihood tree for your assignment. 
 However, below we have supplied code using functions from the package `phangorn` to generate a ML tree. 
 
 ```{r, eval = FALSE}
@@ -367,7 +374,8 @@ Again, because this procedure is computationally intensive you will plot bootstr
 ml.bootstrap <- read.tree("./data/ml_tree/RAxML_bipartitions.T1")
 par(mar = c(1,1,2,1) + 0.1)
 plot.phylo(ml.bootstrap, type = "phylogram", direction = "right", show.tip.label=TRUE,
-           use.edge.length = FALSE, cex = 0.6, label.offset = 1, main = "Maximum Likelihood with Support Values")
+           use.edge.length = FALSE, cex = 0.6, label.offset = 1, 
+           main = "Maximum Likelihood with Support Values")
 add.scale.bar(cex = 0.7)
 nodelabels(ml.bootstrap$node.label, font = 2, bg = "white", frame = "r", cex = 0.5)
 
@@ -742,7 +750,9 @@ Now let's look at the relationship between mass and BMR:
 ```{r,  tidy=TRUE, tidy.opts=list(width.cutoff=60)}
 # Run a simple linear regression
 fit <- lm(log10(BMR_.mlO2.hour.) ~ log10(Body_mass_for_BMR_.gr.), data=pruned.mammal.data)
-plot(log10(pruned.mammal.data$Body_mass_for_BMR_.gr.), log10(pruned.mammal.data$BMR_.mlO2.hour.),  las = 1, xlab="Body mass (kg), log", ylab="Basal Metabolic Rate (BMR), log")
+plot(log10(pruned.mammal.data$Body_mass_for_BMR_.gr.), 
+     log10(pruned.mammal.data$BMR_.mlO2.hour.),  las = 1, 
+     xlab="Body mass (kg), log", ylab="Basal Metabolic Rate (BMR), log")
 abline(a = fit$coefficients[1], b = fit$coefficients[2])
 b1 <- round(fit$coefficients[2],3)
 eqn <- bquote(italic(z) == .(b1))
@@ -754,9 +764,11 @@ Now let's correct for phylogeny using the `phylolm` function from the package `p
 
 ```{r,  tidy=TRUE, tidy.opts=list(width.cutoff=60)}
 # Run a phylogeny-corrected regression with no bootstrap replicates
-fit.phy <- phylolm(log10(BMR_.mlO2.hour.) ~ log10(Body_mass_for_BMR_.gr.), data = pruned.mammal.data, 
-                   pruned.mammal.tree, model = 'lambda', boot = 0)
-plot(log10(pruned.mammal.data$Body_mass_for_BMR_.gr.), log10(pruned.mammal.data$BMR_.mlO2.hour.), las = 1, xlab="Body mass (kg), log", ylab="Basal Metabolic Rate (BMR), log")
+fit.phy <- phylolm(log10(BMR_.mlO2.hour.) ~ log10(Body_mass_for_BMR_.gr.), 
+          data = pruned.mammal.data, pruned.mammal.tree, model = 'lambda', boot = 0)
+plot(log10(pruned.mammal.data$Body_mass_for_BMR_.gr.), 
+          log10(pruned.mammal.data$BMR_.mlO2.hour.), las = 1, xlab="Body mass (kg), 
+          log", ylab="Basal Metabolic Rate (BMR), log")
 abline(a = fit.phy$coefficients[1], b = fit.phy$coefficients[2])
 b1.phy <- round(fit.phy$coefficients[2],3)
 eqn <- bquote(italic(z) == .(b1.phy))
