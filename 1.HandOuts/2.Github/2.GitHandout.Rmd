@@ -1,7 +1,10 @@
 ---
-title: '2\. Reproducible Science with Git and GitHub'
+title: "2. Reproducible Science with Git and GitHub"
 author: 'Z620: Quantitative Biodiversity, Indiana University'
-output: pdf_document
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
 header-includes:
 - \usepackage{graphicx}
 - \usepackage{array}
